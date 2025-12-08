@@ -20,7 +20,9 @@ import net.runelite.client.util.ImageUtil;
 import javax.swing.SwingUtilities;
 import java.awt.image.BufferedImage;
 import java.util.Random;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @PluginDescriptor(
     name = "SlayerScape",
     description = "Unlock OSRS one tile at a time via Slayer",
@@ -57,21 +59,29 @@ public class SlayerScapePlugin extends Plugin
     @Override
     protected void startUp() throws Exception
     {
-        manager = new SlayerManager(config);
-        panel = new SlayerScapePanel(manager, config, itemManager, spriteManager);
+        try
+        {
+            manager = new SlayerManager(config);
+            panel = new SlayerScapePanel(manager, config, itemManager, spriteManager);
 
-        // Add the icon to the sidebar
-        // Note: ensure you have an image named "icon.png" in your resources folder
-        final BufferedImage icon = ImageUtil.loadImageResource(getClass(), "/icon.png");
+            // Add the icon to the sidebar
+            // Note: ensure you have an image named "icon.png" in your resources folder
+            final BufferedImage icon = ImageUtil.loadImageResource(getClass(), "/icon.png");
 
-        navButton = NavigationButton.builder()
-            .tooltip("SlayerScape")
-            .icon(icon)
-            .priority(5)
-            .panel(panel)
-            .build();
+            navButton = NavigationButton.builder()
+                .tooltip("SlayerScape")
+                .icon(icon)
+                .priority(5)
+                .panel(panel)
+                .build();
 
-        clientToolbar.addNavigation(navButton);
+            clientToolbar.addNavigation(navButton);
+        }
+        catch (Exception e)
+        {
+            log.error("Failed to start SlayerScape plugin", e);
+            throw e;
+        }
     }
 
     @Override

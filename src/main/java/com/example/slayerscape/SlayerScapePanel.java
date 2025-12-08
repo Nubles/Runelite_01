@@ -58,7 +58,7 @@ public class SlayerScapePanel extends PluginPanel
 
         add(scrollPane, BorderLayout.CENTER);
 
-        refreshUI();
+        SwingUtilities.invokeLater(this::refreshUI);
     }
 
     public void refreshUI()
