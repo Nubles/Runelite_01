@@ -121,17 +121,48 @@ public class SlayerScapePanel extends PluginPanel
                     tile.add(iconLabel, BorderLayout.CENTER);
                 }
 
+                // Add text label for all tiles (fallback for missing icons or just clarity)
+                // Use HTML for wrapping
+                JLabel textLabel = new JLabel("<html><center>" + data.requirementText + "</center></html>");
+                textLabel.setHorizontalAlignment(SwingConstants.CENTER);
+                textLabel.setFont(new Font("Arial", Font.PLAIN, 10)); // Small font
+
+                // If unlocked and has icon, show icon in CENTER, text in SOUTH
+                if (data.isUnlocked && data.iconId != -1)
+                {
+                    // Icon logic handled above (added to CENTER)
+                    // We need to change layout or add text elsewhere.
+                    // Let's put text in SOUTH
+                    tile.add(textLabel, BorderLayout.SOUTH);
+                }
+                else
+                {
+                    // If locked or no icon, show text in CENTER
+                    tile.add(textLabel, BorderLayout.CENTER);
+                }
+
                 // Click listener to spend keys
                 final int finalX = x;
                 final int finalY = y;
-                tile.addMouseListener(new MouseAdapter() {
+                MouseAdapter clickListener = new MouseAdapter() {
                     @Override
                     public void mousePressed(MouseEvent e) {
-                        if (!data.isUnlocked && manager.spendKey(finalX, finalY)) {
-                            refreshUI();
+                        if (!data.isUnlocked) {
+                             if (manager.spendKey(finalX, finalY)) {
+                                refreshUI();
+                             } else {
+                                 // Maybe flash red or show message?
+                                 System.out.println("Failed to spend key at " + finalX + "," + finalY);
+                             }
                         }
                     }
-                });
+                };
+
+                tile.addMouseListener(clickListener);
+                // Propagate clicks from children
+                for (Component c : tile.getComponents()) {
+                    c.addMouseListener(clickListener);
+                }
 
                 gridContainer.add(tile);
             }
