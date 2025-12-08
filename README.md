@@ -11,11 +11,20 @@ SlayerScape is a unique game mode plugin for Old School RuneScape (OSRS) that lo
 
 ## How to Run Locally (Development)
 
-The easiest way to run the plugin for development is using IntelliJ IDEA.
+The easiest way to run the plugin for development is using the included Gradle wrapper or IntelliJ IDEA.
 
+### Option 1: Using Gradle (Recommended)
+This method ensures all dependencies and VM options (like assertions) are set correctly.
+1.  Open a terminal in the project root.
+2.  Run the command:
+    *   **Windows**: `.\gradlew.bat run`
+    *   **Linux/Mac**: `./gradlew run`
+
+### Option 2: Using IntelliJ IDEA
 1.  Open this project in **IntelliJ IDEA**.
 2.  Locate the test file: `src/test/java/com/example/slayerscape/SlayerScapePluginTest.java`.
 3.  Right-click the file or the `main` method and select **Run 'SlayerScapePluginTest.main()'**.
+    *   *Note*: If you encounter an error about "Assertions are not enabled", edit the Run Configuration and add `-ea` to the **VM Options**.
 4.  The RuneLite client will launch with the SlayerScape plugin enabled.
 
 ## How to Build

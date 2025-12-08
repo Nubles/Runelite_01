@@ -34,6 +34,19 @@ tasks.withType(JavaCompile).configureEach {
 	options.release.set(11)
 }
 
+tasks.withType(JavaExec).configureEach {
+	jvmArgs '-ea'
+}
+
+tasks.withType(Test).configureEach {
+	jvmArgs '-ea'
+}
+
+tasks.register('run', JavaExec) {
+	classpath = sourceSets.test.runtimeClasspath
+	mainClass = 'com.example.slayerscape.SlayerScapePluginTest'
+}
+
 tasks.register('shadowJar', Jar) {
 	dependsOn configurations.testRuntimeClasspath
 	manifest {
