@@ -48,7 +48,11 @@ public class SlayerScapePanel extends PluginPanel
         gridContainer = new JPanel();
         gridContainer.setLayout(new GridBagLayout());
 
-        JScrollPane scrollPane = new JScrollPane(gridContainer);
+        // Wrap gridContainer in another panel to prevent stretching/expanding
+        JPanel centeringPanel = new JPanel(new GridBagLayout());
+        centeringPanel.add(gridContainer);
+
+        JScrollPane scrollPane = new JScrollPane(centeringPanel);
         scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
         scrollPane.getVerticalScrollBar().setUnitIncrement(16); // Faster scrolling
@@ -77,6 +81,9 @@ public class SlayerScapePanel extends PluginPanel
 
         GridBagConstraints c = new GridBagConstraints();
         c.insets = new Insets(2, 2, 2, 2);
+        c.fill = GridBagConstraints.NONE;
+        c.weightx = 0;
+        c.weighty = 0;
 
         for (int x = 0; x < SlayerManager.GRID_SIZE; x++)
         {
@@ -84,8 +91,10 @@ public class SlayerScapePanel extends PluginPanel
             {
                 JPanel tile = new JPanel(new BorderLayout());
                 tile.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-                tile.setPreferredSize(new Dimension(50, 50));
-                tile.setMinimumSize(new Dimension(50, 50)); // Ensure it doesn't shrink
+                Dimension dim = new Dimension(50, 50);
+                tile.setPreferredSize(dim);
+                tile.setMinimumSize(dim);
+                tile.setMaximumSize(dim); // Prevent expanding
 
                 GridTile data = manager.grid[x][y];
 
@@ -109,30 +118,9 @@ public class SlayerScapePanel extends PluginPanel
 
                     if (data.isSprite)
                     {
-                        // Use getSpriteAsync to avoid Client Thread assertions on EDT
-                        // Or just suppress if we know it's fine? No, the error is explicit.
-                        // We must not call getSprite here.
-                        // However, RuneLite doesn't have a simple async sprite fetcher exposed easily here without callbacks.
-                        // Hack: use itemManager.getImage for everything? No, sprite IDs are different.
-                        // Correct way: Load sprites on client thread. But refreshUI is frequent.
-                        // Since sprites are static (skills), we can try to use itemManager for skills if possible (Skill capes?),
-                        // or just accept the limitation and try to run this block via clientThread?
-                        // If we run via clientThread, we can't update UI immediately.
-                        // Let's use a blank placeholder if it fails, OR try to load via ItemID mapping if possible.
-                        // Actually, for this specific error, we can try to wrap in try-catch to avoid crash,
-                        // but the real fix is to not call it.
-                        // Since we are in "Bug Fixing" mode, let's remove the sprite fetching from EDT.
-                        // We can use ItemManager for most things. For Sprites (skills), let's map them to Skill Cape Items?
-                        // Mining Cape: 9792
-                        // This is a hack but safe.
-                        // Alternatively, we skip sprites for now to fix the crash.
-                        // But the user wants images.
-                        // Let's try to map the sprites to equivalent items.
-
-                        // Fallback: If it's a sprite, try to use a representative item instead.
-                        // This avoids the SpriteManager threading issue completely.
-                        int fallbackItemId = -1;
-                        // Checking generic IDs... we can just use -1 and rely on text if we can't fetch sprite safely.
+                        // SKIPPED TO PREVENT CRASH
+                        // getSprite on EDT causes AssertionError.
+                        // TODO: Implement async sprite loading or map to ItemIDs.
                     }
                     else
                     {
