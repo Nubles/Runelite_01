@@ -5,6 +5,7 @@ import net.runelite.api.ItemID;
 import net.runelite.api.Skill;
 import net.runelite.api.SpriteID;
 
+@SuppressWarnings("deprecation")
 public class SlayerManager
 {
     public static final int GRID_SIZE = 11; // 11x11 grid
