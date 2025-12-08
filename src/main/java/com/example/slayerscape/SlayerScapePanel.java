@@ -44,18 +44,14 @@ public class SlayerScapePanel extends PluginPanel
         add(topPanel, BorderLayout.NORTH);
 
         // Center: The Grid
-        // Use GridBagLayout inside a ScrollPane for scrolling support
+        // Use GridBagLayout for flexible grid that allows scrolling in both directions
         gridContainer = new JPanel();
-        gridContainer.setLayout(new GridLayout(SlayerManager.GRID_SIZE, SlayerManager.GRID_SIZE, 2, 2));
+        gridContainer.setLayout(new GridBagLayout());
 
         JScrollPane scrollPane = new JScrollPane(gridContainer);
         scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
-
-        // Ensure the gridContainer has a preferred size large enough to trigger scrolling
-        // 50px per tile * 11 tiles + gaps = ~570px
-        int size = (SlayerManager.GRID_SIZE * 50) + ((SlayerManager.GRID_SIZE - 1) * 2);
-        gridContainer.setPreferredSize(new Dimension(size, size));
+        scrollPane.getVerticalScrollBar().setUnitIncrement(16); // Faster scrolling
 
         add(scrollPane, BorderLayout.CENTER);
 
@@ -79,6 +75,9 @@ public class SlayerScapePanel extends PluginPanel
             xpProgressBar.setVisible(false);
         }
 
+        GridBagConstraints c = new GridBagConstraints();
+        c.insets = new Insets(2, 2, 2, 2);
+
         for (int x = 0; x < SlayerManager.GRID_SIZE; x++)
         {
             for (int y = 0; y < SlayerManager.GRID_SIZE; y++)
@@ -86,6 +85,7 @@ public class SlayerScapePanel extends PluginPanel
                 JPanel tile = new JPanel(new BorderLayout());
                 tile.setBorder(BorderFactory.createLineBorder(Color.BLACK));
                 tile.setPreferredSize(new Dimension(50, 50));
+                tile.setMinimumSize(new Dimension(50, 50)); // Ensure it doesn't shrink
 
                 GridTile data = manager.grid[x][y];
 
@@ -181,11 +181,13 @@ public class SlayerScapePanel extends PluginPanel
 
                 tile.addMouseListener(clickListener);
                 // Propagate clicks from children
-                for (Component c : tile.getComponents()) {
-                    c.addMouseListener(clickListener);
+                for (Component comp : tile.getComponents()) {
+                    comp.addMouseListener(clickListener);
                 }
 
-                gridContainer.add(tile);
+                c.gridx = x;
+                c.gridy = y;
+                gridContainer.add(tile, c);
             }
         }
 
