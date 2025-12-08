@@ -61,12 +61,21 @@ public class SlayerScapePlugin extends Plugin
     {
         try
         {
+            System.out.println("SlayerScape: Starting up...");
             manager = new SlayerManager(config);
+            System.out.println("SlayerScape: Manager created.");
             panel = new SlayerScapePanel(manager, config, itemManager, spriteManager);
+            System.out.println("SlayerScape: Panel created.");
 
             // Add the icon to the sidebar
             // Note: ensure you have an image named "icon.png" in your resources folder
-            final BufferedImage icon = ImageUtil.loadImageResource(getClass(), "/icon.png");
+            BufferedImage icon;
+            try {
+                icon = ImageUtil.loadImageResource(getClass(), "/icon.png");
+            } catch (Exception ex) {
+                System.out.println("SlayerScape: Failed to load icon.png, using blank.");
+                icon = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
+            }
 
             navButton = NavigationButton.builder()
                 .tooltip("SlayerScape")
@@ -76,11 +85,18 @@ public class SlayerScapePlugin extends Plugin
                 .build();
 
             clientToolbar.addNavigation(navButton);
+            System.out.println("SlayerScape: Navigation button added.");
         }
-        catch (Exception e)
+        catch (Throwable e)
         {
+            System.out.println("SlayerScape: CRITICAL STARTUP ERROR");
+            e.printStackTrace();
             log.error("Failed to start SlayerScape plugin", e);
-            throw e;
+            // Don't rethrow? If we rethrow, RuneLite disables it.
+            // But if we don't rethrow, it thinks it started, but maybe button is missing.
+            // Let's rethrow to be standard, but we have the logs now.
+            if (e instanceof Exception) throw (Exception) e;
+            throw new RuntimeException(e);
         }
     }
 
