@@ -4,6 +4,7 @@ import com.google.inject.Provides;
 import javax.inject.Inject;
 import net.runelite.api.Client;
 import net.runelite.api.events.ChatMessage;
+import net.runelite.api.events.StatChanged;
 import net.runelite.api.ChatMessageType;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
@@ -81,5 +82,18 @@ public class SlayerScapePlugin extends Plugin
         }
 
         // 2. (Optional) Detect Level Ups logic would go here
+        // Chat messages vary:
+        // "Congratulations, you just advanced an Agility level."
+        // "Congratulations, you just advanced a Thieving level."
+        // "Congratulations, you've just advanced your Attack level."
+        if (msg.startsWith("Congratulations, you"))
+        {
+             if (msg.contains("advanced a") || msg.contains("advanced an") || msg.contains("advanced your"))
+             {
+                 manager.addKey();
+                 client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", "SlayerScape: Key Found (Level Up)!", null);
+                 panel.refreshUI();
+             }
+        }
     }
 }

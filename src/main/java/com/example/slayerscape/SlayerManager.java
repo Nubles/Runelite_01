@@ -16,7 +16,35 @@ public class SlayerManager
     private void generateGrid()
     {
         Random rng = new Random();
-        String[] possibleTasks = {"Kill 10 Cows", "Mining Level 5", "Cook a Shrimp", "Complete Imp Catcher"};
+        String[] possibleTasks = {
+            // Skilling
+            "Mining Level 5", "Mining Level 10", "Mining Level 20",
+            "Woodcutting Level 5", "Woodcutting Level 10", "Woodcutting Level 20",
+            "Fishing Level 5", "Fishing Level 10", "Fishing Level 20",
+            "Cooking Level 5", "Cooking Level 10", "Cooking Level 20",
+            "Firemaking Level 5", "Firemaking Level 10", "Firemaking Level 20",
+            "Smithing Level 5", "Smithing Level 10", "Smithing Level 20",
+            "Crafting Level 5", "Crafting Level 10", "Crafting Level 20",
+
+            // Combat
+            "Attack Level 5", "Attack Level 10", "Strength Level 5", "Strength Level 10",
+            "Defense Level 5", "Defense Level 10", "Ranged Level 5", "Ranged Level 10",
+            "Magic Level 5", "Magic Level 10", "Prayer Level 5", "Prayer Level 10",
+
+            // Kill Tasks
+            "Kill 10 Cows", "Kill 10 Chickens", "Kill 10 Goblins", "Kill 5 Giant Rats",
+            "Kill 5 Al-Kharid Warriors", "Kill 1 Hill Giant", "Kill 1 Moss Giant",
+            "Kill 5 Guards", "Kill 5 Dwarves", "Kill 5 Skeletons",
+
+            // Quests (F2P)
+            "Complete Cook's Assistant", "Complete Sheep Shearer", "Complete Rune Mysteries",
+            "Complete Imp Catcher", "Complete The Restless Ghost", "Complete Vampire Slayer",
+            "Complete Demon Slayer", "Complete Dragon Slayer I", "Complete Ernest the Chicken",
+
+            // Miscellaneous
+            "Cook a Shrimp", "Burn a normal log", "Smelt a Bronze Bar", "Catch a Shrimp",
+            "Bury a Big Bones", "Craft a Leather Cowl"
+        };
 
         for (int x = 0; x < GRID_SIZE; x++)
         {
