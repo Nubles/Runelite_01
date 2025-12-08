@@ -5,8 +5,14 @@ import java.util.Random;
 public class SlayerManager
 {
     public static final int GRID_SIZE = 11; // 11x11 grid
+    public static final int XP_PER_KEY = 25000; // XP Pity Threshold
+
     public GridTile[][] grid = new GridTile[GRID_SIZE][GRID_SIZE];
     public int slayerKeys = 0;
+
+    // Bad Luck Mitigation / Pity Systems
+    public int xpTowardNextKey = 0;
+    public int slayerTaskDryStreak = 0;
 
     public SlayerManager()
     {
@@ -66,6 +72,50 @@ public class SlayerManager
     public void addKey()
     {
         slayerKeys++;
+    }
+
+    /**
+     * Adds XP to the pity counter.
+     * @param amount The amount of XP gained.
+     * @return The number of keys awarded (usually 0 or 1).
+     */
+    public int addXp(int amount)
+    {
+        if (amount <= 0) return 0;
+
+        xpTowardNextKey += amount;
+        int keysAwarded = 0;
+
+        while (xpTowardNextKey >= XP_PER_KEY)
+        {
+            xpTowardNextKey -= XP_PER_KEY;
+            addKey();
+            keysAwarded++;
+        }
+        return keysAwarded;
+    }
+
+    /**
+     * Attempts to award a key from a Slayer Task with bad luck mitigation.
+     * @return true if a key was awarded.
+     */
+    public boolean attemptSlayerTaskKey()
+    {
+        // Base chance 50%.
+        // Every failure adds 10% to the chance (Bad Luck Mitigation).
+        double chance = 0.50 + (slayerTaskDryStreak * 0.10);
+
+        if (new Random().nextDouble() < chance)
+        {
+            addKey();
+            slayerTaskDryStreak = 0;
+            return true;
+        }
+        else
+        {
+            slayerTaskDryStreak++;
+            return false;
+        }
     }
 
     public boolean spendKey(int x, int y)

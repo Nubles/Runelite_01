@@ -11,16 +11,26 @@ public class SlayerScapePanel extends PluginPanel
     private final SlayerManager manager;
     private final JPanel gridContainer;
     private final JLabel keyLabel;
+    private final JProgressBar xpProgressBar;
 
     public SlayerScapePanel(SlayerManager manager)
     {
         this.manager = manager;
         setLayout(new BorderLayout());
 
-        // Top bar: Key count
+        // Top bar: Key count and XP Progress
+        JPanel topPanel = new JPanel(new BorderLayout());
+
         keyLabel = new JLabel("Keys: " + manager.slayerKeys);
         keyLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        add(keyLabel, BorderLayout.NORTH);
+        topPanel.add(keyLabel, BorderLayout.NORTH);
+
+        xpProgressBar = new JProgressBar(0, SlayerManager.XP_PER_KEY);
+        xpProgressBar.setStringPainted(true);
+        xpProgressBar.setToolTipText("XP until next pity Key");
+        topPanel.add(xpProgressBar, BorderLayout.SOUTH);
+
+        add(topPanel, BorderLayout.NORTH);
 
         // Center: The Grid
         gridContainer = new JPanel();
@@ -34,6 +44,9 @@ public class SlayerScapePanel extends PluginPanel
     {
         gridContainer.removeAll();
         keyLabel.setText("Keys: " + manager.slayerKeys);
+
+        xpProgressBar.setValue(manager.xpTowardNextKey);
+        xpProgressBar.setString("XP Key: " + manager.xpTowardNextKey + " / " + SlayerManager.XP_PER_KEY);
 
         for (int x = 0; x < SlayerManager.GRID_SIZE; x++)
         {

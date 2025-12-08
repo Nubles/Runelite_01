@@ -5,6 +5,8 @@ import javax.inject.Inject;
 import net.runelite.api.Client;
 import net.runelite.api.events.ChatMessage;
 import net.runelite.api.events.StatChanged;
+import net.runelite.api.events.GameStateChanged;
+import net.runelite.api.GameState;
 import net.runelite.api.ChatMessageType;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
@@ -32,6 +34,7 @@ public class SlayerScapePlugin extends Plugin
     private SlayerManager manager;
     private SlayerScapePanel panel;
     private NavigationButton navButton;
+    private long lastOverallXp = -1;
 
     @Override
     protected void startUp() throws Exception
@@ -60,6 +63,46 @@ public class SlayerScapePlugin extends Plugin
     }
 
     @Subscribe
+    public void onGameStateChanged(GameStateChanged event)
+    {
+        if (event.getGameState() == GameState.LOGGED_IN)
+        {
+            lastOverallXp = client.getOverallExperience();
+        }
+    }
+
+    @Subscribe
+    public void onStatChanged(StatChanged event)
+    {
+        // Prevent XP tracking during login/loading to avoid massive key drops
+        if (client.getGameState() != GameState.LOGGED_IN)
+        {
+            return;
+        }
+
+        if (lastOverallXp == -1)
+        {
+            lastOverallXp = client.getOverallExperience();
+            return;
+        }
+
+        long currentXp = client.getOverallExperience();
+        long diff = currentXp - lastOverallXp;
+
+        if (diff > 0)
+        {
+            lastOverallXp = currentXp;
+            int keys = manager.addXp((int) diff);
+
+            if (keys > 0)
+            {
+                client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", "SlayerScape: Key Found (XP Pity)!", null);
+            }
+            panel.refreshUI();
+        }
+    }
+
+    @Subscribe
     public void onChatMessage(ChatMessage event)
     {
         if (event.getType() != ChatMessageType.GAMEMESSAGE && event.getType() != ChatMessageType.SPAM)
@@ -73,9 +116,8 @@ public class SlayerScapePlugin extends Plugin
         // OSRS Message: "You have completed your task! You killed 15 Goblins."
         if (msg.contains("You have completed your task!"))
         {
-            // RNG Check: 50% chance to get a key
-            if (new Random().nextBoolean()) {
-                manager.addKey();
+            // Attempt to get a key with bad luck mitigation
+            if (manager.attemptSlayerTaskKey()) {
                 client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", "SlayerScape: Key Found!", null);
                 panel.refreshUI();
             }
