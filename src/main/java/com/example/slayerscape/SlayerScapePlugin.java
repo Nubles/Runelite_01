@@ -8,6 +8,8 @@ import net.runelite.api.events.StatChanged;
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.GameState;
 import net.runelite.api.ChatMessageType;
+import net.runelite.client.game.ItemManager;
+import net.runelite.client.game.SpriteManager;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.plugins.Plugin;
@@ -15,6 +17,7 @@ import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.ui.ClientToolbar;
 import net.runelite.client.ui.NavigationButton;
 import net.runelite.client.util.ImageUtil;
+import javax.swing.SwingUtilities;
 import java.awt.image.BufferedImage;
 import java.util.Random;
 
@@ -34,6 +37,12 @@ public class SlayerScapePlugin extends Plugin
     @Inject
     private SlayerScapeConfig config;
 
+    @Inject
+    private ItemManager itemManager;
+
+    @Inject
+    private SpriteManager spriteManager;
+
     private SlayerManager manager;
     private SlayerScapePanel panel;
     private NavigationButton navButton;
@@ -49,7 +58,7 @@ public class SlayerScapePlugin extends Plugin
     protected void startUp() throws Exception
     {
         manager = new SlayerManager(config);
-        panel = new SlayerScapePanel(manager, config);
+        panel = new SlayerScapePanel(manager, config, itemManager, spriteManager);
 
         // Add the icon to the sidebar
         // Note: ensure you have an image named "icon.png" in your resources folder
@@ -107,7 +116,7 @@ public class SlayerScapePlugin extends Plugin
             {
                 client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", "SlayerScape: Key Found (XP Pity)!", null);
             }
-            panel.refreshUI();
+            SwingUtilities.invokeLater(() -> panel.refreshUI());
         }
     }
 
@@ -128,7 +137,7 @@ public class SlayerScapePlugin extends Plugin
             // Attempt to get a key with bad luck mitigation
             if (manager.attemptSlayerTaskKey()) {
                 client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", "SlayerScape: Key Found!", null);
-                panel.refreshUI();
+                SwingUtilities.invokeLater(() -> panel.refreshUI());
             }
         }
 
@@ -143,7 +152,7 @@ public class SlayerScapePlugin extends Plugin
              {
                  manager.addKey();
                  client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", "SlayerScape: Key Found (Level Up)!", null);
-                 panel.refreshUI();
+                 SwingUtilities.invokeLater(() -> panel.refreshUI());
              }
         }
     }

@@ -1,13 +1,16 @@
 package com.example.slayerscape;
 
 import java.util.Random;
+import net.runelite.api.ItemID;
+import net.runelite.api.Skill;
+import net.runelite.api.SpriteID;
 
 public class SlayerManager
 {
     public static final int GRID_SIZE = 11; // 11x11 grid
 
     public GridTile[][] grid = new GridTile[GRID_SIZE][GRID_SIZE];
-    public int slayerKeys = 0;
+    public int slayerKeys = 1;
 
     // Bad Luck Mitigation / Pity Systems
     public int xpTowardNextKey = 0;
@@ -61,6 +64,7 @@ public class SlayerManager
                 // Pick a random task for every tile
                 String randomTask = possibleTasks[rng.nextInt(possibleTasks.length)];
                 grid[x][y] = new GridTile(x, y, randomTask);
+                assignIcon(grid[x][y]);
             }
         }
 
@@ -147,5 +151,46 @@ public class SlayerManager
     {
         // Simple logic to unlock adjacent tiles visually (Fog of War removal)
         // In a real app, you'd mark them as "Visible" here.
+    }
+
+    private void assignIcon(GridTile tile)
+    {
+        String req = tile.requirementText.toLowerCase();
+
+        // Skills - Default to using Skill Sprites
+        // Note: In a real plugin you might map these via an Enum or Map
+        if (req.contains("mining")) { tile.iconId = SpriteID.SKILL_MINING; tile.isSprite = true; }
+        else if (req.contains("woodcutting")) { tile.iconId = SpriteID.SKILL_WOODCUTTING; tile.isSprite = true; }
+        else if (req.contains("fishing")) { tile.iconId = SpriteID.SKILL_FISHING; tile.isSprite = true; }
+        else if (req.contains("cooking")) { tile.iconId = SpriteID.SKILL_COOKING; tile.isSprite = true; }
+        else if (req.contains("firemaking")) { tile.iconId = SpriteID.SKILL_FIREMAKING; tile.isSprite = true; }
+        else if (req.contains("smithing")) { tile.iconId = SpriteID.SKILL_SMITHING; tile.isSprite = true; }
+        else if (req.contains("crafting")) { tile.iconId = SpriteID.SKILL_CRAFTING; tile.isSprite = true; }
+        else if (req.contains("attack")) { tile.iconId = SpriteID.SKILL_ATTACK; tile.isSprite = true; }
+        else if (req.contains("strength")) { tile.iconId = SpriteID.SKILL_STRENGTH; tile.isSprite = true; }
+        else if (req.contains("defense")) { tile.iconId = SpriteID.SKILL_DEFENCE; tile.isSprite = true; }
+        else if (req.contains("ranged")) { tile.iconId = SpriteID.SKILL_RANGED; tile.isSprite = true; }
+        else if (req.contains("magic")) { tile.iconId = SpriteID.SKILL_MAGIC; tile.isSprite = true; }
+        else if (req.contains("prayer")) { tile.iconId = SpriteID.SKILL_PRAYER; tile.isSprite = true; }
+
+        // Mobs / Items - Use Item IDs
+        else if (req.contains("cow")) { tile.iconId = ItemID.COWHIDE; tile.isSprite = false; }
+        else if (req.contains("chicken")) { tile.iconId = ItemID.FEATHER; tile.isSprite = false; }
+        else if (req.contains("goblin")) { tile.iconId = ItemID.GOBLIN_MAIL; tile.isSprite = false; }
+        else if (req.contains("rat")) { tile.iconId = ItemID.BONES; tile.isSprite = false; } // Close enough (Rat tail not in generic ItemID?)
+        else if (req.contains("giant")) { tile.iconId = ItemID.BIG_BONES; tile.isSprite = false; }
+        else if (req.contains("guard")) { tile.iconId = ItemID.IRON_BOOTS; tile.isSprite = false; } // Close enough
+        else if (req.contains("dwarf")) { tile.iconId = ItemID.DWARF_REMAINS; tile.isSprite = false; }
+        else if (req.contains("skeleton")) { tile.iconId = ItemID.BONES; tile.isSprite = false; } // BONE_SHARDS might be too new
+
+        // Quests - Use Quest Sprite
+        else if (req.contains("complete")) { tile.iconId = SpriteID.TAB_QUESTS; tile.isSprite = true; }
+
+        // Misc
+        else if (req.contains("shrimp")) { tile.iconId = ItemID.RAW_SHRIMPS; tile.isSprite = false; }
+        else if (req.contains("log")) { tile.iconId = ItemID.LOGS; tile.isSprite = false; }
+        else if (req.contains("bronze bar")) { tile.iconId = ItemID.BRONZE_BAR; tile.isSprite = false; }
+        else if (req.contains("bones")) { tile.iconId = ItemID.BIG_BONES; tile.isSprite = false; }
+        else if (req.contains("cowl")) { tile.iconId = ItemID.LEATHER_COWL; tile.isSprite = false; }
     }
 }
