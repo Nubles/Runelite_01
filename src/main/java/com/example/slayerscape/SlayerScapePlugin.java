@@ -31,16 +31,25 @@ public class SlayerScapePlugin extends Plugin
     @Inject
     private ClientToolbar clientToolbar;
 
+    @Inject
+    private SlayerScapeConfig config;
+
     private SlayerManager manager;
     private SlayerScapePanel panel;
     private NavigationButton navButton;
     private long lastOverallXp = -1;
 
+    @Provides
+    SlayerScapeConfig provideConfig(ConfigManager configManager)
+    {
+        return configManager.getConfig(SlayerScapeConfig.class);
+    }
+
     @Override
     protected void startUp() throws Exception
     {
-        manager = new SlayerManager();
-        panel = new SlayerScapePanel(manager);
+        manager = new SlayerManager(config);
+        panel = new SlayerScapePanel(manager, config);
 
         // Add the icon to the sidebar
         // Note: ensure you have an image named "icon.png" in your resources folder

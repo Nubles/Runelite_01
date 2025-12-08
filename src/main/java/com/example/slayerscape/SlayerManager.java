@@ -5,7 +5,6 @@ import java.util.Random;
 public class SlayerManager
 {
     public static final int GRID_SIZE = 11; // 11x11 grid
-    public static final int XP_PER_KEY = 25000; // XP Pity Threshold
 
     public GridTile[][] grid = new GridTile[GRID_SIZE][GRID_SIZE];
     public int slayerKeys = 0;
@@ -14,8 +13,11 @@ public class SlayerManager
     public int xpTowardNextKey = 0;
     public int slayerTaskDryStreak = 0;
 
-    public SlayerManager()
+    private final SlayerScapeConfig config;
+
+    public SlayerManager(SlayerScapeConfig config)
     {
+        this.config = config;
         generateGrid();
     }
 
@@ -81,14 +83,15 @@ public class SlayerManager
      */
     public int addXp(int amount)
     {
-        if (amount <= 0) return 0;
+        if (amount <= 0 || !config.enableXpPity()) return 0;
 
         xpTowardNextKey += amount;
         int keysAwarded = 0;
+        int threshold = config.xpThreshold();
 
-        while (xpTowardNextKey >= XP_PER_KEY)
+        while (xpTowardNextKey >= threshold)
         {
-            xpTowardNextKey -= XP_PER_KEY;
+            xpTowardNextKey -= threshold;
             addKey();
             keysAwarded++;
         }
@@ -101,9 +104,13 @@ public class SlayerManager
      */
     public boolean attemptSlayerTaskKey()
     {
-        // Base chance 50%.
-        // Every failure adds 10% to the chance (Bad Luck Mitigation).
-        double chance = 0.50 + (slayerTaskDryStreak * 0.10);
+        double chance = 0.50; // Base chance
+
+        if (config.enableDryStreak())
+        {
+            // Every failure adds 10% to the chance
+            chance += (slayerTaskDryStreak * 0.10);
+        }
 
         if (new Random().nextDouble() < chance)
         {

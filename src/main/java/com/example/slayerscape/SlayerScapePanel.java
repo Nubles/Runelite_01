@@ -12,10 +12,12 @@ public class SlayerScapePanel extends PluginPanel
     private final JPanel gridContainer;
     private final JLabel keyLabel;
     private final JProgressBar xpProgressBar;
+    private final SlayerScapeConfig config;
 
-    public SlayerScapePanel(SlayerManager manager)
+    public SlayerScapePanel(SlayerManager manager, SlayerScapeConfig config)
     {
         this.manager = manager;
+        this.config = config;
         setLayout(new BorderLayout());
 
         // Top bar: Key count and XP Progress
@@ -25,7 +27,7 @@ public class SlayerScapePanel extends PluginPanel
         keyLabel.setHorizontalAlignment(SwingConstants.CENTER);
         topPanel.add(keyLabel, BorderLayout.NORTH);
 
-        xpProgressBar = new JProgressBar(0, SlayerManager.XP_PER_KEY);
+        xpProgressBar = new JProgressBar(0, config.xpThreshold());
         xpProgressBar.setStringPainted(true);
         xpProgressBar.setToolTipText("XP until next pity Key");
         topPanel.add(xpProgressBar, BorderLayout.SOUTH);
@@ -45,8 +47,17 @@ public class SlayerScapePanel extends PluginPanel
         gridContainer.removeAll();
         keyLabel.setText("Keys: " + manager.slayerKeys);
 
-        xpProgressBar.setValue(manager.xpTowardNextKey);
-        xpProgressBar.setString("XP Key: " + manager.xpTowardNextKey + " / " + SlayerManager.XP_PER_KEY);
+        if (config.enableXpPity())
+        {
+            xpProgressBar.setVisible(true);
+            xpProgressBar.setMaximum(config.xpThreshold());
+            xpProgressBar.setValue(manager.xpTowardNextKey);
+            xpProgressBar.setString("XP Key: " + manager.xpTowardNextKey + " / " + config.xpThreshold());
+        }
+        else
+        {
+            xpProgressBar.setVisible(false);
+        }
 
         for (int x = 0; x < SlayerManager.GRID_SIZE; x++)
         {
