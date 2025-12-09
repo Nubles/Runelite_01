@@ -73,6 +73,9 @@ public class SlayerManager
         int center = GRID_SIZE / 2;
         grid[center][center].isUnlocked = true;
         grid[center][center].isCompleted = true;
+        grid[center][center].requirementText = "Start";
+        grid[center][center].iconId = -1;
+        grid[center][center].isSprite = false;
         revealNeighbors(center, center);
     }
 
@@ -146,7 +149,7 @@ public class SlayerManager
         if (!tile.isCompleted)
         {
             tile.isCompleted = true;
-            addKey(); // Reward for manual completion too
+            // No key awarded for manual grid completion
         }
     }
 
