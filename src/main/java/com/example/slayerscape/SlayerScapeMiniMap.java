@@ -5,6 +5,9 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.function.Consumer;
+import net.runelite.client.game.ItemManager;
+import net.runelite.client.util.AsyncBufferedImage;
+import java.awt.image.BufferedImage;
 
 public class SlayerScapeMiniMap extends JPanel
 {
@@ -13,15 +16,17 @@ public class SlayerScapeMiniMap extends JPanel
 
     private final SlayerManager manager;
     private final Consumer<GridTile> onTileSelected;
+    private final ItemManager itemManager;
 
     private Point selectedCoords = new Point(SlayerManager.GRID_SIZE / 2, SlayerManager.GRID_SIZE / 2); // Default center
 
-    public SlayerScapeMiniMap(SlayerManager manager, Consumer<GridTile> onTileSelected)
+    public SlayerScapeMiniMap(SlayerManager manager, Consumer<GridTile> onTileSelected, ItemManager itemManager)
     {
         this.manager = manager;
         this.onTileSelected = onTileSelected;
+        this.itemManager = itemManager;
 
-        // Calculate size: 11 * 19 = ~209px. Fits in 225px panel.
+        // Calculate size: 50 * 19 = 950px.
         int dim = SlayerManager.GRID_SIZE * (TILE_SIZE + GAP);
         setPreferredSize(new Dimension(dim, dim));
 
@@ -57,9 +62,17 @@ public class SlayerScapeMiniMap extends JPanel
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
 
-        for (int x = 0; x < SlayerManager.GRID_SIZE; x++)
+        // Get visible rect to only draw what is needed
+        Rectangle clip = g.getClipBounds();
+
+        int startX = Math.max(0, clip.x / (TILE_SIZE + GAP));
+        int endX = Math.min(SlayerManager.GRID_SIZE, (clip.x + clip.width) / (TILE_SIZE + GAP) + 1);
+        int startY = Math.max(0, clip.y / (TILE_SIZE + GAP));
+        int endY = Math.min(SlayerManager.GRID_SIZE, (clip.y + clip.height) / (TILE_SIZE + GAP) + 1);
+
+        for (int x = startX; x < endX; x++)
         {
-            for (int y = 0; y < SlayerManager.GRID_SIZE; y++)
+            for (int y = startY; y < endY; y++)
             {
                 int drawX = x * (TILE_SIZE + GAP);
                 int drawY = y * (TILE_SIZE + GAP);
@@ -82,6 +95,23 @@ public class SlayerScapeMiniMap extends JPanel
 
                 g2d.fillRect(drawX, drawY, TILE_SIZE, TILE_SIZE);
 
+                // Draw Icon if visible and has icon
+                if ((tile.isUnlocked || tile.isCompleted || manager.isNeighborUnlocked(x, y)) && tile.iconId != -1)
+                {
+                    // For now, only using Item IDs as per GridTile change.
+                    // Sprites not supported in this version unless we add SpriteManager back.
+                    // Assuming all tasks have item IDs.
+                    if (!tile.isSprite)
+                    {
+                        AsyncBufferedImage img = itemManager.getImage(tile.iconId);
+                        if (img != null)
+                        {
+                            img.onLoaded(this::repaint);
+                            g2d.drawImage(img, drawX, drawY, TILE_SIZE, TILE_SIZE, null);
+                        }
+                    }
+                }
+
                 // Selection Highlight
                 if (x == selectedCoords.x && y == selectedCoords.y)
                 {
@@ -97,9 +127,9 @@ public class SlayerScapeMiniMap extends JPanel
                 }
 
                 // Optional: Draw '?' for locked
-                if (!tile.isUnlocked)
+                if (!tile.isUnlocked && !tile.isCompleted && manager.isNeighborUnlocked(x, y))
                 {
-                    g2d.setColor(new Color(60, 60, 60));
+                    // g2d.setColor(new Color(60, 60, 60));
                     // g2d.drawString("?", drawX + 5, drawY + 14); // Too small
                 }
             }
