@@ -8,7 +8,7 @@ import net.runelite.api.SpriteID;
 @SuppressWarnings("deprecation")
 public class SlayerManager
 {
-    public static final int GRID_SIZE = 11; // 11x11 grid
+    public static final int GRID_SIZE = 30; // 30x30 grid
 
     public GridTile[][] grid = new GridTile[GRID_SIZE][GRID_SIZE];
     public int slayerKeys = 1;
@@ -29,14 +29,27 @@ public class SlayerManager
     {
         Random rng = new Random();
         String[] possibleTasks = {
-            // Skilling
+            // Skilling - Gathering
             "Mining Level 5", "Mining Level 10", "Mining Level 20",
             "Woodcutting Level 5", "Woodcutting Level 10", "Woodcutting Level 20",
             "Fishing Level 5", "Fishing Level 10", "Fishing Level 20",
+            "Farming Level 5", "Farming Level 10", "Farming Level 20",
+            "Hunter Level 5", "Hunter Level 10", "Hunter Level 20",
+
+            // Skilling - Production
             "Cooking Level 5", "Cooking Level 10", "Cooking Level 20",
             "Firemaking Level 5", "Firemaking Level 10", "Firemaking Level 20",
             "Smithing Level 5", "Smithing Level 10", "Smithing Level 20",
             "Crafting Level 5", "Crafting Level 10", "Crafting Level 20",
+            "Fletching Level 5", "Fletching Level 10", "Fletching Level 20",
+            "Herblore Level 5", "Herblore Level 10", "Herblore Level 20",
+            "Runecraft Level 5", "Runecraft Level 10", "Runecraft Level 20",
+            "Construction Level 5", "Construction Level 10", "Construction Level 20",
+
+            // Skilling - Support/Other
+            "Agility Level 5", "Agility Level 10", "Agility Level 20",
+            "Thieving Level 5", "Thieving Level 10", "Thieving Level 20",
+            "Slayer Level 5", "Slayer Level 10", "Slayer Level 20",
 
             // Combat
             "Attack Level 5", "Attack Level 10", "Strength Level 5", "Strength Level 10",
@@ -204,6 +217,15 @@ public class SlayerManager
         else if (req.contains("firemaking")) { tile.iconId = SpriteID.SKILL_FIREMAKING; tile.isSprite = true; }
         else if (req.contains("smithing")) { tile.iconId = SpriteID.SKILL_SMITHING; tile.isSprite = true; }
         else if (req.contains("crafting")) { tile.iconId = SpriteID.SKILL_CRAFTING; tile.isSprite = true; }
+        else if (req.contains("fletching")) { tile.iconId = SpriteID.SKILL_FLETCHING; tile.isSprite = true; }
+        else if (req.contains("herblore")) { tile.iconId = SpriteID.SKILL_HERBLORE; tile.isSprite = true; }
+        else if (req.contains("runecraft")) { tile.iconId = SpriteID.SKILL_RUNECRAFT; tile.isSprite = true; }
+        else if (req.contains("construction")) { tile.iconId = SpriteID.SKILL_CONSTRUCTION; tile.isSprite = true; }
+        else if (req.contains("agility")) { tile.iconId = SpriteID.SKILL_AGILITY; tile.isSprite = true; }
+        else if (req.contains("thieving")) { tile.iconId = SpriteID.SKILL_THIEVING; tile.isSprite = true; }
+        else if (req.contains("farming")) { tile.iconId = SpriteID.SKILL_FARMING; tile.isSprite = true; }
+        else if (req.contains("hunter")) { tile.iconId = SpriteID.SKILL_HUNTER; tile.isSprite = true; }
+        else if (req.contains("slayer")) { tile.iconId = SpriteID.SKILL_SLAYER; tile.isSprite = true; }
         else if (req.contains("attack")) { tile.iconId = SpriteID.SKILL_ATTACK; tile.isSprite = true; }
         else if (req.contains("strength")) { tile.iconId = SpriteID.SKILL_STRENGTH; tile.isSprite = true; }
         else if (req.contains("defense")) { tile.iconId = SpriteID.SKILL_DEFENCE; tile.isSprite = true; }
