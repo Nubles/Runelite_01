@@ -1,0 +1,2221 @@
+> Task :compileJava UP-TO-DATE
+> Task :processResources UP-TO-DATE
+> Task :classes UP-TO-DATE
+
+> Task :compileTestJava
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+
+> Task :processTestResources
+> Task :testClasses
+
+> Task :run
+2025-12-09 19:01:51 UTC [AWT-EventQueue-0] WARN  net.runelite.client.ui.SplashScreen - Unable to start splash screen
+java.awt.HeadlessException:
+No X11 DISPLAY variable was set,
+or no headful library support was found,
+but this program performed an operation which requires it,
+
+	at java.desktop/java.awt.GraphicsEnvironment.checkHeadless(GraphicsEnvironment.java:164)
+	at java.desktop/java.awt.Window.<init>(Window.java:553)
+	at java.desktop/java.awt.Frame.<init>(Frame.java:428)
+	at java.desktop/java.awt.Frame.<init>(Frame.java:393)
+	at java.desktop/javax.swing.JFrame.<init>(JFrame.java:180)
+	at net.runelite.client.ui.SplashScreen.<init>(SplashScreen.java:69)
+	at net.runelite.client.ui.SplashScreen.lambda$init$0(SplashScreen.java:177)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:308)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:773)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:720)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:714)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:742)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+2025-12-09 19:01:51 UTC [main] INFO  net.runelite.client.RuneLite - RuneLite 1.12.7 (launcher version unknown) starting up, args: none
+2025-12-09 19:01:51 UTC [main] INFO  net.runelite.client.RuneLite - Java VM arguments: -Dfile.encoding=UTF-8 -Duser.country -Duser.language=en -Duser.variant -ea
+2025-12-09 19:01:54 UTC [Preloader] ERROR net.runelite.client.RuneLite - Uncaught exception:
+java.awt.HeadlessException:
+No X11 DISPLAY variable was set,
+or no headful library support was found,
+but this program performed an operation which requires it,
+
+	at java.desktop/java.applet.Applet.<init>(Applet.java:81)
+	at bm.<init>(bm.java:75)
+	at client.<init>(client.java:166)
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.ReflectAccess.newInstance(ReflectAccess.java:128)
+	at java.base/jdk.internal.reflect.ReflectionFactory.newInstance(ReflectionFactory.java:304)
+	at java.base/java.lang.Class.newInstance(Class.java:725)
+	at net.runelite.client.rs.ClientLoader.loadClient(ClientLoader.java:200)
+	at net.runelite.client.rs.ClientLoader.doLoad(ClientLoader.java:92)
+	at net.runelite.client.rs.ClientLoader.get(ClientLoader.java:73)
+	at net.runelite.client.RuneLite.lambda$main$1(RuneLite.java:232)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2025-12-09 19:02:37 UTC [main] INFO  net.runelite.client.rs.ClientLoader - Failed to get jav_config from host "oldschool.config.runescape.com" (oldschool332.runescape.com: Temporary failure in name resolution)
+2025-12-09 19:02:52 UTC [main] WARN  net.runelite.client.rs.WorldSupplier - Unable to retrieve world list
+java.net.UnknownHostException: api.runelite.net: Temporary failure in name resolution
+	at java.base/java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method)
+	at java.base/java.net.Inet6AddressImpl.lookupAllHostAddr(Inet6AddressImpl.java:52)
+	at java.base/java.net.InetAddress$PlatformResolver.lookupByName(InetAddress.java:1211)
+	at java.base/java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1828)
+	at java.base/java.net.InetAddress$NameServiceAddresses.get(InetAddress.java:1139)
+	at java.base/java.net.InetAddress.getAllByName0(InetAddress.java:1818)
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1688)
+	at okhttp3.Dns.lambda$static$0(Dns.java:39)
+	at okhttp3.internal.connection.RouteSelector.resetNextInetSocketAddress(RouteSelector.java:171)
+	at okhttp3.internal.connection.RouteSelector.nextProxy(RouteSelector.java:135)
+	at okhttp3.internal.connection.RouteSelector.next(RouteSelector.java:84)
+	at okhttp3.internal.connection.ExchangeFinder.findConnection(ExchangeFinder.java:187)
+	at okhttp3.internal.connection.ExchangeFinder.findHealthyConnection(ExchangeFinder.java:108)
+	at okhttp3.internal.connection.ExchangeFinder.find(ExchangeFinder.java:88)
+	at okhttp3.internal.connection.Transmitter.newExchange(Transmitter.java:169)
+	at okhttp3.internal.connection.ConnectInterceptor.intercept(ConnectInterceptor.java:41)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:142)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:117)
+	at okhttp3.internal.cache.CacheInterceptor.intercept(CacheInterceptor.java:94)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:142)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:117)
+	at okhttp3.internal.http.BridgeInterceptor.intercept(BridgeInterceptor.java:93)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:142)
+	at okhttp3.internal.http.RetryAndFollowUpInterceptor.intercept(RetryAndFollowUpInterceptor.java:88)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:142)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:117)
+	at net.runelite.client.RuneLite.lambda$buildHttpClient$5(RuneLite.java:448)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:142)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:117)
+	at okhttp3.RealCall.getResponseWithInterceptorChain(RealCall.java:229)
+	at okhttp3.RealCall.execute(RealCall.java:81)
+	at net.runelite.client.game.WorldClient.lookupWorlds(WorldClient.java:61)
+	at net.runelite.client.rs.WorldSupplier.get(WorldSupplier.java:64)
+	at net.runelite.client.rs.ClientLoader.downloadConfig(ClientLoader.java:149)
+	at net.runelite.client.rs.ClientLoader.doLoad(ClientLoader.java:88)
+	at net.runelite.client.rs.ClientLoader.get(ClientLoader.java:73)
+	at net.runelite.client.rs.ClientLoader.get(ClientLoader.java:47)
+	at net.runelite.client.RuneLiteModule.provideClient(RuneLiteModule.java:162)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at com.google.inject.internal.ProviderMethod$ReflectionProviderMethod.doProvision(ProviderMethod.java:292)
+	at com.google.inject.internal.ProviderMethod$Factory.provision(ProviderMethod.java:401)
+	at com.google.inject.internal.ProviderMethod$Factory.get(ProviderMethod.java:376)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ProviderMethod$Factory.provision(ProviderMethod.java:402)
+	at com.google.inject.internal.ProviderMethod$Factory.get(ProviderMethod.java:376)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:110)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:110)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ProviderMethod$Factory.provision(ProviderMethod.java:402)
+	at com.google.inject.internal.ProviderMethod$Factory.get(ProviderMethod.java:376)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:110)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleFieldInjector.inject(SingleFieldInjector.java:54)
+	at com.google.inject.internal.MembersInjectorImpl.injectMembers(MembersInjectorImpl.java:132)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:120)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.InjectorImpl$2$1.call(InjectorImpl.java:1019)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1085)
+	at com.google.inject.internal.InjectorImpl$2.get(InjectorImpl.java:1015)
+	at com.google.inject.internal.InjectorImpl.getInstance(InjectorImpl.java:1054)
+	at net.runelite.client.RuneLite.main(RuneLite.java:276)
+	at com.example.slayerscape.SlayerScapePluginTest.main(SlayerScapePluginTest.java:11)
+2025-12-09 19:03:14 UTC [main] ERROR net.runelite.client.RuneLite - Failure during startup
+com.google.inject.ProvisionException: Unable to provision, see the following errors:
+
+1) Error in custom provider, java.awt.HeadlessException:
+No X11 DISPLAY variable was set,
+or no headful library support was found,
+but this program performed an operation which requires it,
+
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  while locating net.runelite.api.Client
+    for the 4th parameter of net.runelite.client.config.ConfigManager.<init>(Unknown Source)
+  at net.runelite.client.config.ConfigManager.class(Unknown Source)
+  while locating net.runelite.client.config.ConfigManager
+    for the 5th parameter of net.runelite.client.plugins.PluginManager.<init>(Unknown Source)
+  at net.runelite.client.RuneLiteModule.configure(RuneLiteModule.java:136)
+  while locating net.runelite.client.plugins.PluginManager
+    for field at net.runelite.client.RuneLite.pluginManager(Unknown Source)
+  at net.runelite.client.RuneLite.class(Unknown Source)
+  while locating net.runelite.client.RuneLite
+Caused by: java.awt.HeadlessException:
+No X11 DISPLAY variable was set,
+or no headful library support was found,
+but this program performed an operation which requires it,
+
+	at java.desktop/java.applet.Applet.<init>(Applet.java:81)
+	at bm.<init>(bm.java:75)
+	at client.<init>(client.java:166)
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.ReflectAccess.newInstance(ReflectAccess.java:128)
+	at java.base/jdk.internal.reflect.ReflectionFactory.newInstance(ReflectionFactory.java:304)
+	at java.base/java.lang.Class.newInstance(Class.java:725)
+	at net.runelite.client.rs.ClientLoader.loadClient(ClientLoader.java:200)
+	at net.runelite.client.rs.ClientLoader.doLoad(ClientLoader.java:92)
+	at net.runelite.client.rs.ClientLoader.get(ClientLoader.java:73)
+	at net.runelite.client.rs.ClientLoader.get(ClientLoader.java:47)
+	at net.runelite.client.RuneLiteModule.provideClient(RuneLiteModule.java:162)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at com.google.inject.internal.ProviderMethod$ReflectionProviderMethod.doProvision(ProviderMethod.java:292)
+	at com.google.inject.internal.ProviderMethod$Factory.provision(ProviderMethod.java:401)
+	at com.google.inject.internal.ProviderMethod$Factory.get(ProviderMethod.java:376)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:110)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:110)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleFieldInjector.inject(SingleFieldInjector.java:54)
+	at com.google.inject.internal.MembersInjectorImpl.injectMembers(MembersInjectorImpl.java:132)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:120)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.InjectorImpl$2$1.call(InjectorImpl.java:1019)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1085)
+	at com.google.inject.internal.InjectorImpl$2.get(InjectorImpl.java:1015)
+	at com.google.inject.internal.InjectorImpl.getInstance(InjectorImpl.java:1054)
+	at net.runelite.client.RuneLite.main(RuneLite.java:276)
+	at com.example.slayerscape.SlayerScapePluginTest.main(SlayerScapePluginTest.java:11)
+
+2) Error in custom provider, java.awt.HeadlessException:
+No X11 DISPLAY variable was set,
+or no headful library support was found,
+but this program performed an operation which requires it,
+
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  while locating net.runelite.api.Client
+    for the 1st parameter of net.runelite.client.RuneLiteModule.provideHttpClient(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideHttpClient(Unknown Source)
+  while locating okhttp3.OkHttpClient
+    for the 1st parameter of net.runelite.client.config.ConfigClient.<init>(Unknown Source)
+  while locating net.runelite.client.config.ConfigClient
+    for the 6th parameter of net.runelite.client.config.ConfigManager.<init>(Unknown Source)
+  at net.runelite.client.config.ConfigManager.class(Unknown Source)
+  while locating net.runelite.client.config.ConfigManager
+    for the 5th parameter of net.runelite.client.plugins.PluginManager.<init>(Unknown Source)
+  at net.runelite.client.RuneLiteModule.configure(RuneLiteModule.java:136)
+  while locating net.runelite.client.plugins.PluginManager
+    for field at net.runelite.client.RuneLite.pluginManager(Unknown Source)
+  at net.runelite.client.RuneLite.class(Unknown Source)
+  while locating net.runelite.client.RuneLite
+Caused by: java.awt.HeadlessException:
+No X11 DISPLAY variable was set,
+or no headful library support was found,
+but this program performed an operation which requires it,
+
+	at java.desktop/java.applet.Applet.<init>(Applet.java:81)
+	at bm.<init>(bm.java:75)
+	at client.<init>(client.java:166)
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.ReflectAccess.newInstance(ReflectAccess.java:128)
+	at java.base/jdk.internal.reflect.ReflectionFactory.newInstance(ReflectionFactory.java:304)
+	at java.base/java.lang.Class.newInstance(Class.java:725)
+	at net.runelite.client.rs.ClientLoader.loadClient(ClientLoader.java:200)
+	at net.runelite.client.rs.ClientLoader.doLoad(ClientLoader.java:92)
+	at net.runelite.client.rs.ClientLoader.get(ClientLoader.java:73)
+	at net.runelite.client.rs.ClientLoader.get(ClientLoader.java:47)
+	at net.runelite.client.RuneLiteModule.provideClient(RuneLiteModule.java:162)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at com.google.inject.internal.ProviderMethod$ReflectionProviderMethod.doProvision(ProviderMethod.java:292)
+	at com.google.inject.internal.ProviderMethod$Factory.provision(ProviderMethod.java:401)
+	at com.google.inject.internal.ProviderMethod$Factory.get(ProviderMethod.java:376)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ProviderMethod$Factory.provision(ProviderMethod.java:402)
+	at com.google.inject.internal.ProviderMethod$Factory.get(ProviderMethod.java:376)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:110)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:110)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:110)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleFieldInjector.inject(SingleFieldInjector.java:54)
+	at com.google.inject.internal.MembersInjectorImpl.injectMembers(MembersInjectorImpl.java:132)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:120)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.InjectorImpl$2$1.call(InjectorImpl.java:1019)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1085)
+	at com.google.inject.internal.InjectorImpl$2.get(InjectorImpl.java:1015)
+	at com.google.inject.internal.InjectorImpl.getInstance(InjectorImpl.java:1054)
+	at net.runelite.client.RuneLite.main(RuneLite.java:276)
+	at com.example.slayerscape.SlayerScapePluginTest.main(SlayerScapePluginTest.java:11)
+
+3) Error in custom provider, java.awt.HeadlessException:
+No X11 DISPLAY variable was set,
+or no headful library support was found,
+but this program performed an operation which requires it,
+
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  while locating net.runelite.api.Client
+    for the 1st parameter of net.runelite.client.RuneLiteModule.provideHttpClient(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideHttpClient(Unknown Source)
+  while locating okhttp3.OkHttpClient
+    for the 1st parameter of net.runelite.client.account.AccountClient.<init>(Unknown Source)
+  while locating net.runelite.client.account.AccountClient
+    for the 3rd parameter of net.runelite.client.account.SessionManager.<init>(Unknown Source)
+  at net.runelite.client.RuneLiteModule.configure(RuneLiteModule.java:137)
+  while locating net.runelite.client.account.SessionManager
+    for the 8th parameter of net.runelite.client.config.ConfigManager.<init>(Unknown Source)
+  at net.runelite.client.config.ConfigManager.class(Unknown Source)
+  while locating net.runelite.client.config.ConfigManager
+    for the 5th parameter of net.runelite.client.plugins.PluginManager.<init>(Unknown Source)
+  at net.runelite.client.RuneLiteModule.configure(RuneLiteModule.java:136)
+  while locating net.runelite.client.plugins.PluginManager
+    for field at net.runelite.client.RuneLite.pluginManager(Unknown Source)
+  at net.runelite.client.RuneLite.class(Unknown Source)
+  while locating net.runelite.client.RuneLite
+Caused by: java.awt.HeadlessException:
+No X11 DISPLAY variable was set,
+or no headful library support was found,
+but this program performed an operation which requires it,
+
+	at java.desktop/java.applet.Applet.<init>(Applet.java:81)
+	at bm.<init>(bm.java:75)
+	at client.<init>(client.java:166)
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.ReflectAccess.newInstance(ReflectAccess.java:128)
+	at java.base/jdk.internal.reflect.ReflectionFactory.newInstance(ReflectionFactory.java:304)
+	at java.base/java.lang.Class.newInstance(Class.java:725)
+	at net.runelite.client.rs.ClientLoader.loadClient(ClientLoader.java:200)
+	at net.runelite.client.rs.ClientLoader.doLoad(ClientLoader.java:92)
+	at net.runelite.client.rs.ClientLoader.get(ClientLoader.java:73)
+	at net.runelite.client.rs.ClientLoader.get(ClientLoader.java:47)
+	at net.runelite.client.RuneLiteModule.provideClient(RuneLiteModule.java:162)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at com.google.inject.internal.ProviderMethod$ReflectionProviderMethod.doProvision(ProviderMethod.java:292)
+	at com.google.inject.internal.ProviderMethod$Factory.provision(ProviderMethod.java:401)
+	at com.google.inject.internal.ProviderMethod$Factory.get(ProviderMethod.java:376)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ProviderMethod$Factory.provision(ProviderMethod.java:402)
+	at com.google.inject.internal.ProviderMethod$Factory.get(ProviderMethod.java:376)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:110)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:110)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:110)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:110)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleFieldInjector.inject(SingleFieldInjector.java:54)
+	at com.google.inject.internal.MembersInjectorImpl.injectMembers(MembersInjectorImpl.java:132)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:120)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.InjectorImpl$2$1.call(InjectorImpl.java:1019)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1085)
+	at com.google.inject.internal.InjectorImpl$2.get(InjectorImpl.java:1015)
+	at com.google.inject.internal.InjectorImpl.getInstance(InjectorImpl.java:1054)
+	at net.runelite.client.RuneLite.main(RuneLite.java:276)
+	at com.example.slayerscape.SlayerScapePluginTest.main(SlayerScapePluginTest.java:11)
+
+4) Error in custom provider, java.awt.HeadlessException:
+No X11 DISPLAY variable was set,
+or no headful library support was found,
+but this program performed an operation which requires it,
+
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  while locating net.runelite.api.Client
+    for the 4th parameter of net.runelite.client.config.ConfigManager.<init>(Unknown Source)
+  at net.runelite.client.config.ConfigManager.class(Unknown Source)
+  while locating net.runelite.client.config.ConfigManager
+    for the 1st parameter of net.runelite.client.externalplugins.ExternalPluginManager.<init>(Unknown Source)
+  at net.runelite.client.externalplugins.ExternalPluginManager.class(Unknown Source)
+  while locating net.runelite.client.externalplugins.ExternalPluginManager
+    for field at net.runelite.client.RuneLite.externalPluginManager(Unknown Source)
+  at net.runelite.client.RuneLite.class(Unknown Source)
+  while locating net.runelite.client.RuneLite
+Caused by: java.awt.HeadlessException (same stack trace as error #1)
+5) Error in custom provider, java.awt.HeadlessException:
+No X11 DISPLAY variable was set,
+or no headful library support was found,
+but this program performed an operation which requires it,
+
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  while locating net.runelite.api.Client
+    for the 1st parameter of net.runelite.client.RuneLiteModule.provideHttpClient(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideHttpClient(Unknown Source)
+  while locating okhttp3.OkHttpClient
+    for the 1st parameter of net.runelite.client.config.ConfigClient.<init>(Unknown Source)
+  while locating net.runelite.client.config.ConfigClient
+    for the 6th parameter of net.runelite.client.config.ConfigManager.<init>(Unknown Source)
+  at net.runelite.client.config.ConfigManager.class(Unknown Source)
+  while locating net.runelite.client.config.ConfigManager
+    for the 1st parameter of net.runelite.client.externalplugins.ExternalPluginManager.<init>(Unknown Source)
+  at net.runelite.client.externalplugins.ExternalPluginManager.class(Unknown Source)
+  while locating net.runelite.client.externalplugins.ExternalPluginManager
+    for field at net.runelite.client.RuneLite.externalPluginManager(Unknown Source)
+  at net.runelite.client.RuneLite.class(Unknown Source)
+  while locating net.runelite.client.RuneLite
+Caused by: java.awt.HeadlessException (same stack trace as error #2)
+6) Error in custom provider, java.awt.HeadlessException:
+No X11 DISPLAY variable was set,
+or no headful library support was found,
+but this program performed an operation which requires it,
+
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  while locating net.runelite.api.Client
+    for the 1st parameter of net.runelite.client.RuneLiteModule.provideHttpClient(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideHttpClient(Unknown Source)
+  while locating okhttp3.OkHttpClient
+    for the 1st parameter of net.runelite.client.account.AccountClient.<init>(Unknown Source)
+  while locating net.runelite.client.account.AccountClient
+    for the 3rd parameter of net.runelite.client.account.SessionManager.<init>(Unknown Source)
+  at net.runelite.client.RuneLiteModule.configure(RuneLiteModule.java:137)
+  while locating net.runelite.client.account.SessionManager
+    for the 8th parameter of net.runelite.client.config.ConfigManager.<init>(Unknown Source)
+  at net.runelite.client.config.ConfigManager.class(Unknown Source)
+  while locating net.runelite.client.config.ConfigManager
+    for the 1st parameter of net.runelite.client.externalplugins.ExternalPluginManager.<init>(Unknown Source)
+  at net.runelite.client.externalplugins.ExternalPluginManager.class(Unknown Source)
+  while locating net.runelite.client.externalplugins.ExternalPluginManager
+    for field at net.runelite.client.RuneLite.externalPluginManager(Unknown Source)
+  at net.runelite.client.RuneLite.class(Unknown Source)
+  while locating net.runelite.client.RuneLite
+Caused by: java.awt.HeadlessException (same stack trace as error #3)
+7) Error in custom provider, java.awt.HeadlessException:
+No X11 DISPLAY variable was set,
+or no headful library support was found,
+but this program performed an operation which requires it,
+
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  while locating net.runelite.api.Client
+    for the 1st parameter of net.runelite.client.RuneLiteModule.provideHttpClient(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideHttpClient(Unknown Source)
+  while locating okhttp3.OkHttpClient
+    for the 1st parameter of net.runelite.client.externalplugins.ExternalPluginClient.<init>(Unknown Source)
+  while locating net.runelite.client.externalplugins.ExternalPluginClient
+    for the 2nd parameter of net.runelite.client.externalplugins.ExternalPluginManager.<init>(Unknown Source)
+  at net.runelite.client.externalplugins.ExternalPluginManager.class(Unknown Source)
+  while locating net.runelite.client.externalplugins.ExternalPluginManager
+    for field at net.runelite.client.RuneLite.externalPluginManager(Unknown Source)
+  at net.runelite.client.RuneLite.class(Unknown Source)
+  while locating net.runelite.client.RuneLite
+Caused by: java.awt.HeadlessException:
+No X11 DISPLAY variable was set,
+or no headful library support was found,
+but this program performed an operation which requires it,
+
+	at java.desktop/java.applet.Applet.<init>(Applet.java:81)
+	at bm.<init>(bm.java:75)
+	at client.<init>(client.java:166)
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.ReflectAccess.newInstance(ReflectAccess.java:128)
+	at java.base/jdk.internal.reflect.ReflectionFactory.newInstance(ReflectionFactory.java:304)
+	at java.base/java.lang.Class.newInstance(Class.java:725)
+	at net.runelite.client.rs.ClientLoader.loadClient(ClientLoader.java:200)
+	at net.runelite.client.rs.ClientLoader.doLoad(ClientLoader.java:92)
+	at net.runelite.client.rs.ClientLoader.get(ClientLoader.java:73)
+	at net.runelite.client.rs.ClientLoader.get(ClientLoader.java:47)
+	at net.runelite.client.RuneLiteModule.provideClient(RuneLiteModule.java:162)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at com.google.inject.internal.ProviderMethod$ReflectionProviderMethod.doProvision(ProviderMethod.java:292)
+	at com.google.inject.internal.ProviderMethod$Factory.provision(ProviderMethod.java:401)
+	at com.google.inject.internal.ProviderMethod$Factory.get(ProviderMethod.java:376)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ProviderMethod$Factory.provision(ProviderMethod.java:402)
+	at com.google.inject.internal.ProviderMethod$Factory.get(ProviderMethod.java:376)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:110)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:110)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleFieldInjector.inject(SingleFieldInjector.java:54)
+	at com.google.inject.internal.MembersInjectorImpl.injectMembers(MembersInjectorImpl.java:132)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:120)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.InjectorImpl$2$1.call(InjectorImpl.java:1019)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1085)
+	at com.google.inject.internal.InjectorImpl$2.get(InjectorImpl.java:1015)
+	at com.google.inject.internal.InjectorImpl.getInstance(InjectorImpl.java:1054)
+	at net.runelite.client.RuneLite.main(RuneLite.java:276)
+	at com.example.slayerscape.SlayerScapePluginTest.main(SlayerScapePluginTest.java:11)
+
+8) Error in custom provider, java.awt.HeadlessException:
+No X11 DISPLAY variable was set,
+or no headful library support was found,
+but this program performed an operation which requires it,
+
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  while locating net.runelite.api.Client
+    for the 4th parameter of net.runelite.client.config.ConfigManager.<init>(Unknown Source)
+  at net.runelite.client.config.ConfigManager.class(Unknown Source)
+  while locating net.runelite.client.config.ConfigManager
+    for the 5th parameter of net.runelite.client.plugins.PluginManager.<init>(Unknown Source)
+  at net.runelite.client.RuneLiteModule.configure(RuneLiteModule.java:136)
+  while locating net.runelite.client.plugins.PluginManager
+    for the 4th parameter of net.runelite.client.externalplugins.ExternalPluginManager.<init>(Unknown Source)
+  at net.runelite.client.externalplugins.ExternalPluginManager.class(Unknown Source)
+  while locating net.runelite.client.externalplugins.ExternalPluginManager
+    for field at net.runelite.client.RuneLite.externalPluginManager(Unknown Source)
+  at net.runelite.client.RuneLite.class(Unknown Source)
+  while locating net.runelite.client.RuneLite
+Caused by: java.awt.HeadlessException:
+No X11 DISPLAY variable was set,
+or no headful library support was found,
+but this program performed an operation which requires it,
+
+	at java.desktop/java.applet.Applet.<init>(Applet.java:81)
+	at bm.<init>(bm.java:75)
+	at client.<init>(client.java:166)
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.ReflectAccess.newInstance(ReflectAccess.java:128)
+	at java.base/jdk.internal.reflect.ReflectionFactory.newInstance(ReflectionFactory.java:304)
+	at java.base/java.lang.Class.newInstance(Class.java:725)
+	at net.runelite.client.rs.ClientLoader.loadClient(ClientLoader.java:200)
+	at net.runelite.client.rs.ClientLoader.doLoad(ClientLoader.java:92)
+	at net.runelite.client.rs.ClientLoader.get(ClientLoader.java:73)
+	at net.runelite.client.rs.ClientLoader.get(ClientLoader.java:47)
+	at net.runelite.client.RuneLiteModule.provideClient(RuneLiteModule.java:162)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at com.google.inject.internal.ProviderMethod$ReflectionProviderMethod.doProvision(ProviderMethod.java:292)
+	at com.google.inject.internal.ProviderMethod$Factory.provision(ProviderMethod.java:401)
+	at com.google.inject.internal.ProviderMethod$Factory.get(ProviderMethod.java:376)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:110)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:110)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:110)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleFieldInjector.inject(SingleFieldInjector.java:54)
+	at com.google.inject.internal.MembersInjectorImpl.injectMembers(MembersInjectorImpl.java:132)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:120)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.InjectorImpl$2$1.call(InjectorImpl.java:1019)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1085)
+	at com.google.inject.internal.InjectorImpl$2.get(InjectorImpl.java:1015)
+	at com.google.inject.internal.InjectorImpl.getInstance(InjectorImpl.java:1054)
+	at net.runelite.client.RuneLite.main(RuneLite.java:276)
+	at com.example.slayerscape.SlayerScapePluginTest.main(SlayerScapePluginTest.java:11)
+
+9) Error in custom provider, java.awt.HeadlessException:
+No X11 DISPLAY variable was set,
+or no headful library support was found,
+but this program performed an operation which requires it,
+
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  while locating net.runelite.api.Client
+    for the 1st parameter of net.runelite.client.RuneLiteModule.provideHttpClient(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideHttpClient(Unknown Source)
+  while locating okhttp3.OkHttpClient
+    for the 1st parameter of net.runelite.client.config.ConfigClient.<init>(Unknown Source)
+  while locating net.runelite.client.config.ConfigClient
+    for the 6th parameter of net.runelite.client.config.ConfigManager.<init>(Unknown Source)
+  at net.runelite.client.config.ConfigManager.class(Unknown Source)
+  while locating net.runelite.client.config.ConfigManager
+    for the 5th parameter of net.runelite.client.plugins.PluginManager.<init>(Unknown Source)
+  at net.runelite.client.RuneLiteModule.configure(RuneLiteModule.java:136)
+  while locating net.runelite.client.plugins.PluginManager
+    for the 4th parameter of net.runelite.client.externalplugins.ExternalPluginManager.<init>(Unknown Source)
+  at net.runelite.client.externalplugins.ExternalPluginManager.class(Unknown Source)
+  while locating net.runelite.client.externalplugins.ExternalPluginManager
+    for field at net.runelite.client.RuneLite.externalPluginManager(Unknown Source)
+  at net.runelite.client.RuneLite.class(Unknown Source)
+  while locating net.runelite.client.RuneLite
+Caused by: java.awt.HeadlessException (same stack trace as error #3)
+10) Error in custom provider, java.awt.HeadlessException:
+No X11 DISPLAY variable was set,
+or no headful library support was found,
+but this program performed an operation which requires it,
+
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  while locating net.runelite.api.Client
+    for the 1st parameter of net.runelite.client.RuneLiteModule.provideHttpClient(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideHttpClient(Unknown Source)
+  while locating okhttp3.OkHttpClient
+    for the 1st parameter of net.runelite.client.account.AccountClient.<init>(Unknown Source)
+  while locating net.runelite.client.account.AccountClient
+    for the 3rd parameter of net.runelite.client.account.SessionManager.<init>(Unknown Source)
+  at net.runelite.client.RuneLiteModule.configure(RuneLiteModule.java:137)
+  while locating net.runelite.client.account.SessionManager
+    for the 8th parameter of net.runelite.client.config.ConfigManager.<init>(Unknown Source)
+  at net.runelite.client.config.ConfigManager.class(Unknown Source)
+  while locating net.runelite.client.config.ConfigManager
+    for the 5th parameter of net.runelite.client.plugins.PluginManager.<init>(Unknown Source)
+  at net.runelite.client.RuneLiteModule.configure(RuneLiteModule.java:136)
+  while locating net.runelite.client.plugins.PluginManager
+    for the 4th parameter of net.runelite.client.externalplugins.ExternalPluginManager.<init>(Unknown Source)
+  at net.runelite.client.externalplugins.ExternalPluginManager.class(Unknown Source)
+  while locating net.runelite.client.externalplugins.ExternalPluginManager
+    for field at net.runelite.client.RuneLite.externalPluginManager(Unknown Source)
+  at net.runelite.client.RuneLite.class(Unknown Source)
+  while locating net.runelite.client.RuneLite
+Caused by: java.awt.HeadlessException:
+No X11 DISPLAY variable was set,
+or no headful library support was found,
+but this program performed an operation which requires it,
+
+	at java.desktop/java.applet.Applet.<init>(Applet.java:81)
+	at bm.<init>(bm.java:75)
+	at client.<init>(client.java:166)
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.ReflectAccess.newInstance(ReflectAccess.java:128)
+	at java.base/jdk.internal.reflect.ReflectionFactory.newInstance(ReflectionFactory.java:304)
+	at java.base/java.lang.Class.newInstance(Class.java:725)
+	at net.runelite.client.rs.ClientLoader.loadClient(ClientLoader.java:200)
+	at net.runelite.client.rs.ClientLoader.doLoad(ClientLoader.java:92)
+	at net.runelite.client.rs.ClientLoader.get(ClientLoader.java:73)
+	at net.runelite.client.rs.ClientLoader.get(ClientLoader.java:47)
+	at net.runelite.client.RuneLiteModule.provideClient(RuneLiteModule.java:162)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at com.google.inject.internal.ProviderMethod$ReflectionProviderMethod.doProvision(ProviderMethod.java:292)
+	at com.google.inject.internal.ProviderMethod$Factory.provision(ProviderMethod.java:401)
+	at com.google.inject.internal.ProviderMethod$Factory.get(ProviderMethod.java:376)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ProviderMethod$Factory.provision(ProviderMethod.java:402)
+	at com.google.inject.internal.ProviderMethod$Factory.get(ProviderMethod.java:376)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:110)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:110)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:110)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:110)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:110)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleFieldInjector.inject(SingleFieldInjector.java:54)
+	at com.google.inject.internal.MembersInjectorImpl.injectMembers(MembersInjectorImpl.java:132)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:120)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.InjectorImpl$2$1.call(InjectorImpl.java:1019)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1085)
+	at com.google.inject.internal.InjectorImpl$2.get(InjectorImpl.java:1015)
+	at com.google.inject.internal.InjectorImpl.getInstance(InjectorImpl.java:1054)
+	at net.runelite.client.RuneLite.main(RuneLite.java:276)
+	at com.example.slayerscape.SlayerScapePluginTest.main(SlayerScapePluginTest.java:11)
+
+11) Error in custom provider, java.awt.HeadlessException:
+No X11 DISPLAY variable was set,
+or no headful library support was found,
+but this program performed an operation which requires it,
+
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  while locating net.runelite.api.Client
+    for the 1st parameter of net.runelite.client.RuneLiteModule.provideHttpClient(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideHttpClient(Unknown Source)
+  while locating okhttp3.OkHttpClient
+    for the 6th parameter of net.runelite.client.externalplugins.ExternalPluginManager.<init>(Unknown Source)
+  at net.runelite.client.externalplugins.ExternalPluginManager.class(Unknown Source)
+  while locating net.runelite.client.externalplugins.ExternalPluginManager
+    for field at net.runelite.client.RuneLite.externalPluginManager(Unknown Source)
+  at net.runelite.client.RuneLite.class(Unknown Source)
+  while locating net.runelite.client.RuneLite
+Caused by: java.awt.HeadlessException:
+No X11 DISPLAY variable was set,
+or no headful library support was found,
+but this program performed an operation which requires it,
+
+	at java.desktop/java.applet.Applet.<init>(Applet.java:81)
+	at bm.<init>(bm.java:75)
+	at client.<init>(client.java:166)
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.ReflectAccess.newInstance(ReflectAccess.java:128)
+	at java.base/jdk.internal.reflect.ReflectionFactory.newInstance(ReflectionFactory.java:304)
+	at java.base/java.lang.Class.newInstance(Class.java:725)
+	at net.runelite.client.rs.ClientLoader.loadClient(ClientLoader.java:200)
+	at net.runelite.client.rs.ClientLoader.doLoad(ClientLoader.java:92)
+	at net.runelite.client.rs.ClientLoader.get(ClientLoader.java:73)
+	at net.runelite.client.rs.ClientLoader.get(ClientLoader.java:47)
+	at net.runelite.client.RuneLiteModule.provideClient(RuneLiteModule.java:162)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at com.google.inject.internal.ProviderMethod$ReflectionProviderMethod.doProvision(ProviderMethod.java:292)
+	at com.google.inject.internal.ProviderMethod$Factory.provision(ProviderMethod.java:401)
+	at com.google.inject.internal.ProviderMethod$Factory.get(ProviderMethod.java:376)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ProviderMethod$Factory.provision(ProviderMethod.java:402)
+	at com.google.inject.internal.ProviderMethod$Factory.get(ProviderMethod.java:376)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:110)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleFieldInjector.inject(SingleFieldInjector.java:54)
+	at com.google.inject.internal.MembersInjectorImpl.injectMembers(MembersInjectorImpl.java:132)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:120)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.InjectorImpl$2$1.call(InjectorImpl.java:1019)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1085)
+	at com.google.inject.internal.InjectorImpl$2.get(InjectorImpl.java:1015)
+	at com.google.inject.internal.InjectorImpl.getInstance(InjectorImpl.java:1054)
+	at net.runelite.client.RuneLite.main(RuneLite.java:276)
+	at com.example.slayerscape.SlayerScapePluginTest.main(SlayerScapePluginTest.java:11)
+
+12) Error in custom provider, java.awt.HeadlessException:
+No X11 DISPLAY variable was set,
+or no headful library support was found,
+but this program performed an operation which requires it,
+
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  while locating net.runelite.api.Client
+    for the 4th parameter of net.runelite.client.config.ConfigManager.<init>(Unknown Source)
+  at net.runelite.client.config.ConfigManager.class(Unknown Source)
+  while locating net.runelite.client.config.ConfigManager
+    for field at net.runelite.client.RuneLite.configManager(Unknown Source)
+  at net.runelite.client.RuneLite.class(Unknown Source)
+  while locating net.runelite.client.RuneLite
+Caused by: java.awt.HeadlessException:
+No X11 DISPLAY variable was set,
+or no headful library support was found,
+but this program performed an operation which requires it,
+
+	at java.desktop/java.applet.Applet.<init>(Applet.java:81)
+	at bm.<init>(bm.java:75)
+	at client.<init>(client.java:166)
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.ReflectAccess.newInstance(ReflectAccess.java:128)
+	at java.base/jdk.internal.reflect.ReflectionFactory.newInstance(ReflectionFactory.java:304)
+	at java.base/java.lang.Class.newInstance(Class.java:725)
+	at net.runelite.client.rs.ClientLoader.loadClient(ClientLoader.java:200)
+	at net.runelite.client.rs.ClientLoader.doLoad(ClientLoader.java:92)
+	at net.runelite.client.rs.ClientLoader.get(ClientLoader.java:73)
+	at net.runelite.client.rs.ClientLoader.get(ClientLoader.java:47)
+	at net.runelite.client.RuneLiteModule.provideClient(RuneLiteModule.java:162)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at com.google.inject.internal.ProviderMethod$ReflectionProviderMethod.doProvision(ProviderMethod.java:292)
+	at com.google.inject.internal.ProviderMethod$Factory.provision(ProviderMethod.java:401)
+	at com.google.inject.internal.ProviderMethod$Factory.get(ProviderMethod.java:376)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:110)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleFieldInjector.inject(SingleFieldInjector.java:54)
+	at com.google.inject.internal.MembersInjectorImpl.injectMembers(MembersInjectorImpl.java:132)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:120)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.InjectorImpl$2$1.call(InjectorImpl.java:1019)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1085)
+	at com.google.inject.internal.InjectorImpl$2.get(InjectorImpl.java:1015)
+	at com.google.inject.internal.InjectorImpl.getInstance(InjectorImpl.java:1054)
+	at net.runelite.client.RuneLite.main(RuneLite.java:276)
+	at com.example.slayerscape.SlayerScapePluginTest.main(SlayerScapePluginTest.java:11)
+
+13) Error in custom provider, java.awt.HeadlessException:
+No X11 DISPLAY variable was set,
+or no headful library support was found,
+but this program performed an operation which requires it,
+
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  while locating net.runelite.api.Client
+    for the 1st parameter of net.runelite.client.RuneLiteModule.provideHttpClient(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideHttpClient(Unknown Source)
+  while locating okhttp3.OkHttpClient
+    for the 1st parameter of net.runelite.client.config.ConfigClient.<init>(Unknown Source)
+  while locating net.runelite.client.config.ConfigClient
+    for the 6th parameter of net.runelite.client.config.ConfigManager.<init>(Unknown Source)
+  at net.runelite.client.config.ConfigManager.class(Unknown Source)
+  while locating net.runelite.client.config.ConfigManager
+    for field at net.runelite.client.RuneLite.configManager(Unknown Source)
+  at net.runelite.client.RuneLite.class(Unknown Source)
+  while locating net.runelite.client.RuneLite
+Caused by: java.awt.HeadlessException (same stack trace as error #7)
+14) Error in custom provider, java.awt.HeadlessException:
+No X11 DISPLAY variable was set,
+or no headful library support was found,
+but this program performed an operation which requires it,
+
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  while locating net.runelite.api.Client
+    for the 1st parameter of net.runelite.client.RuneLiteModule.provideHttpClient(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideHttpClient(Unknown Source)
+  while locating okhttp3.OkHttpClient
+    for the 1st parameter of net.runelite.client.account.AccountClient.<init>(Unknown Source)
+  while locating net.runelite.client.account.AccountClient
+    for the 3rd parameter of net.runelite.client.account.SessionManager.<init>(Unknown Source)
+  at net.runelite.client.RuneLiteModule.configure(RuneLiteModule.java:137)
+  while locating net.runelite.client.account.SessionManager
+    for the 8th parameter of net.runelite.client.config.ConfigManager.<init>(Unknown Source)
+  at net.runelite.client.config.ConfigManager.class(Unknown Source)
+  while locating net.runelite.client.config.ConfigManager
+    for field at net.runelite.client.RuneLite.configManager(Unknown Source)
+  at net.runelite.client.RuneLite.class(Unknown Source)
+  while locating net.runelite.client.RuneLite
+Caused by: java.awt.HeadlessException (same stack trace as error #2)
+15) Error in custom provider, java.awt.HeadlessException:
+No X11 DISPLAY variable was set,
+or no headful library support was found,
+but this program performed an operation which requires it,
+
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  while locating net.runelite.api.Client
+    for the 1st parameter of net.runelite.client.RuneLiteModule.provideHttpClient(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideHttpClient(Unknown Source)
+  while locating okhttp3.OkHttpClient
+    for the 1st parameter of net.runelite.client.account.AccountClient.<init>(Unknown Source)
+  while locating net.runelite.client.account.AccountClient
+    for the 3rd parameter of net.runelite.client.account.SessionManager.<init>(Unknown Source)
+  at net.runelite.client.RuneLiteModule.configure(RuneLiteModule.java:137)
+  while locating net.runelite.client.account.SessionManager
+    for field at net.runelite.client.RuneLite.sessionManager(Unknown Source)
+  at net.runelite.client.RuneLite.class(Unknown Source)
+  while locating net.runelite.client.RuneLite
+Caused by: java.awt.HeadlessException (same stack trace as error #7)
+16) Error in custom provider, java.awt.HeadlessException:
+No X11 DISPLAY variable was set,
+or no headful library support was found,
+but this program performed an operation which requires it,
+
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  while locating net.runelite.api.Client
+    for the 2nd parameter of net.runelite.client.ClientSessionManager.<init>(Unknown Source)
+  at net.runelite.client.ClientSessionManager.class(Unknown Source)
+  while locating net.runelite.client.ClientSessionManager
+    for field at net.runelite.client.RuneLite.clientSessionManager(Unknown Source)
+  at net.runelite.client.RuneLite.class(Unknown Source)
+  while locating net.runelite.client.RuneLite
+Caused by: java.awt.HeadlessException (same stack trace as error #12)
+17) Error in custom provider, java.awt.HeadlessException:
+No X11 DISPLAY variable was set,
+or no headful library support was found,
+but this program performed an operation which requires it,
+
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  while locating net.runelite.api.Client
+    for the 1st parameter of net.runelite.client.RuneLiteModule.provideHttpClient(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideHttpClient(Unknown Source)
+  while locating okhttp3.OkHttpClient
+    for the 1st parameter of net.runelite.client.SessionClient.<init>(Unknown Source)
+  while locating net.runelite.client.SessionClient
+    for the 3rd parameter of net.runelite.client.ClientSessionManager.<init>(Unknown Source)
+  at net.runelite.client.ClientSessionManager.class(Unknown Source)
+  while locating net.runelite.client.ClientSessionManager
+    for field at net.runelite.client.RuneLite.clientSessionManager(Unknown Source)
+  at net.runelite.client.RuneLite.class(Unknown Source)
+  while locating net.runelite.client.RuneLite
+Caused by: java.awt.HeadlessException (same stack trace as error #7)
+18) Error in custom provider, java.awt.HeadlessException:
+No X11 DISPLAY variable was set,
+or no headful library support was found,
+but this program performed an operation which requires it,
+
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  while locating net.runelite.api.Client
+    for the 4th parameter of net.runelite.client.config.ConfigManager.<init>(Unknown Source)
+  at net.runelite.client.config.ConfigManager.class(Unknown Source)
+  while locating net.runelite.client.config.ConfigManager
+    for the 1st parameter of net.runelite.client.RuneLiteModule.provideConfig(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideConfig(Unknown Source)
+  while locating net.runelite.client.config.RuneLiteConfig
+    for the 1st parameter of net.runelite.client.ui.ClientUI.<init>(Unknown Source)
+  at net.runelite.client.ui.ClientUI.class(Unknown Source)
+  while locating net.runelite.client.ui.ClientUI
+    for field at net.runelite.client.RuneLite.clientUI(Unknown Source)
+  at net.runelite.client.RuneLite.class(Unknown Source)
+  while locating net.runelite.client.RuneLite
+Caused by: java.awt.HeadlessException:
+No X11 DISPLAY variable was set,
+or no headful library support was found,
+but this program performed an operation which requires it,
+
+	at java.desktop/java.applet.Applet.<init>(Applet.java:81)
+	at bm.<init>(bm.java:75)
+	at client.<init>(client.java:166)
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.ReflectAccess.newInstance(ReflectAccess.java:128)
+	at java.base/jdk.internal.reflect.ReflectionFactory.newInstance(ReflectionFactory.java:304)
+	at java.base/java.lang.Class.newInstance(Class.java:725)
+	at net.runelite.client.rs.ClientLoader.loadClient(ClientLoader.java:200)
+	at net.runelite.client.rs.ClientLoader.doLoad(ClientLoader.java:92)
+	at net.runelite.client.rs.ClientLoader.get(ClientLoader.java:73)
+	at net.runelite.client.rs.ClientLoader.get(ClientLoader.java:47)
+	at net.runelite.client.RuneLiteModule.provideClient(RuneLiteModule.java:162)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at com.google.inject.internal.ProviderMethod$ReflectionProviderMethod.doProvision(ProviderMethod.java:292)
+	at com.google.inject.internal.ProviderMethod$Factory.provision(ProviderMethod.java:401)
+	at com.google.inject.internal.ProviderMethod$Factory.get(ProviderMethod.java:376)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:110)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ProviderMethod$Factory.provision(ProviderMethod.java:402)
+	at com.google.inject.internal.ProviderMethod$Factory.get(ProviderMethod.java:376)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:110)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleFieldInjector.inject(SingleFieldInjector.java:54)
+	at com.google.inject.internal.MembersInjectorImpl.injectMembers(MembersInjectorImpl.java:132)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:120)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.InjectorImpl$2$1.call(InjectorImpl.java:1019)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1085)
+	at com.google.inject.internal.InjectorImpl$2.get(InjectorImpl.java:1015)
+	at com.google.inject.internal.InjectorImpl.getInstance(InjectorImpl.java:1054)
+	at net.runelite.client.RuneLite.main(RuneLite.java:276)
+	at com.example.slayerscape.SlayerScapePluginTest.main(SlayerScapePluginTest.java:11)
+
+19) Error in custom provider, java.awt.HeadlessException:
+No X11 DISPLAY variable was set,
+or no headful library support was found,
+but this program performed an operation which requires it,
+
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  while locating net.runelite.api.Client
+    for the 1st parameter of net.runelite.client.RuneLiteModule.provideHttpClient(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideHttpClient(Unknown Source)
+  while locating okhttp3.OkHttpClient
+    for the 1st parameter of net.runelite.client.config.ConfigClient.<init>(Unknown Source)
+  while locating net.runelite.client.config.ConfigClient
+    for the 6th parameter of net.runelite.client.config.ConfigManager.<init>(Unknown Source)
+  at net.runelite.client.config.ConfigManager.class(Unknown Source)
+  while locating net.runelite.client.config.ConfigManager
+    for the 1st parameter of net.runelite.client.RuneLiteModule.provideConfig(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideConfig(Unknown Source)
+  while locating net.runelite.client.config.RuneLiteConfig
+    for the 1st parameter of net.runelite.client.ui.ClientUI.<init>(Unknown Source)
+  at net.runelite.client.ui.ClientUI.class(Unknown Source)
+  while locating net.runelite.client.ui.ClientUI
+    for field at net.runelite.client.RuneLite.clientUI(Unknown Source)
+  at net.runelite.client.RuneLite.class(Unknown Source)
+  while locating net.runelite.client.RuneLite
+Caused by: java.awt.HeadlessException:
+No X11 DISPLAY variable was set,
+or no headful library support was found,
+but this program performed an operation which requires it,
+
+	at java.desktop/java.applet.Applet.<init>(Applet.java:81)
+	at bm.<init>(bm.java:75)
+	at client.<init>(client.java:166)
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.ReflectAccess.newInstance(ReflectAccess.java:128)
+	at java.base/jdk.internal.reflect.ReflectionFactory.newInstance(ReflectionFactory.java:304)
+	at java.base/java.lang.Class.newInstance(Class.java:725)
+	at net.runelite.client.rs.ClientLoader.loadClient(ClientLoader.java:200)
+	at net.runelite.client.rs.ClientLoader.doLoad(ClientLoader.java:92)
+	at net.runelite.client.rs.ClientLoader.get(ClientLoader.java:73)
+	at net.runelite.client.rs.ClientLoader.get(ClientLoader.java:47)
+	at net.runelite.client.RuneLiteModule.provideClient(RuneLiteModule.java:162)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at com.google.inject.internal.ProviderMethod$ReflectionProviderMethod.doProvision(ProviderMethod.java:292)
+	at com.google.inject.internal.ProviderMethod$Factory.provision(ProviderMethod.java:401)
+	at com.google.inject.internal.ProviderMethod$Factory.get(ProviderMethod.java:376)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ProviderMethod$Factory.provision(ProviderMethod.java:402)
+	at com.google.inject.internal.ProviderMethod$Factory.get(ProviderMethod.java:376)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:110)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:110)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ProviderMethod$Factory.provision(ProviderMethod.java:402)
+	at com.google.inject.internal.ProviderMethod$Factory.get(ProviderMethod.java:376)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:110)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleFieldInjector.inject(SingleFieldInjector.java:54)
+	at com.google.inject.internal.MembersInjectorImpl.injectMembers(MembersInjectorImpl.java:132)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:120)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.InjectorImpl$2$1.call(InjectorImpl.java:1019)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1085)
+	at com.google.inject.internal.InjectorImpl$2.get(InjectorImpl.java:1015)
+	at com.google.inject.internal.InjectorImpl.getInstance(InjectorImpl.java:1054)
+	at net.runelite.client.RuneLite.main(RuneLite.java:276)
+	at com.example.slayerscape.SlayerScapePluginTest.main(SlayerScapePluginTest.java:11)
+
+20) Error in custom provider, java.awt.HeadlessException:
+No X11 DISPLAY variable was set,
+or no headful library support was found,
+but this program performed an operation which requires it,
+
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  while locating net.runelite.api.Client
+    for the 1st parameter of net.runelite.client.RuneLiteModule.provideHttpClient(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideHttpClient(Unknown Source)
+  while locating okhttp3.OkHttpClient
+    for the 1st parameter of net.runelite.client.account.AccountClient.<init>(Unknown Source)
+  while locating net.runelite.client.account.AccountClient
+    for the 3rd parameter of net.runelite.client.account.SessionManager.<init>(Unknown Source)
+  at net.runelite.client.RuneLiteModule.configure(RuneLiteModule.java:137)
+  while locating net.runelite.client.account.SessionManager
+    for the 8th parameter of net.runelite.client.config.ConfigManager.<init>(Unknown Source)
+  at net.runelite.client.config.ConfigManager.class(Unknown Source)
+  while locating net.runelite.client.config.ConfigManager
+    for the 1st parameter of net.runelite.client.RuneLiteModule.provideConfig(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideConfig(Unknown Source)
+  while locating net.runelite.client.config.RuneLiteConfig
+    for the 1st parameter of net.runelite.client.ui.ClientUI.<init>(Unknown Source)
+  at net.runelite.client.ui.ClientUI.class(Unknown Source)
+  while locating net.runelite.client.ui.ClientUI
+    for field at net.runelite.client.RuneLite.clientUI(Unknown Source)
+  at net.runelite.client.RuneLite.class(Unknown Source)
+  while locating net.runelite.client.RuneLite
+Caused by: java.awt.HeadlessException:
+No X11 DISPLAY variable was set,
+or no headful library support was found,
+but this program performed an operation which requires it,
+
+	at java.desktop/java.applet.Applet.<init>(Applet.java:81)
+	at bm.<init>(bm.java:75)
+	at client.<init>(client.java:166)
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.ReflectAccess.newInstance(ReflectAccess.java:128)
+	at java.base/jdk.internal.reflect.ReflectionFactory.newInstance(ReflectionFactory.java:304)
+	at java.base/java.lang.Class.newInstance(Class.java:725)
+	at net.runelite.client.rs.ClientLoader.loadClient(ClientLoader.java:200)
+	at net.runelite.client.rs.ClientLoader.doLoad(ClientLoader.java:92)
+	at net.runelite.client.rs.ClientLoader.get(ClientLoader.java:73)
+	at net.runelite.client.rs.ClientLoader.get(ClientLoader.java:47)
+	at net.runelite.client.RuneLiteModule.provideClient(RuneLiteModule.java:162)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at com.google.inject.internal.ProviderMethod$ReflectionProviderMethod.doProvision(ProviderMethod.java:292)
+	at com.google.inject.internal.ProviderMethod$Factory.provision(ProviderMethod.java:401)
+	at com.google.inject.internal.ProviderMethod$Factory.get(ProviderMethod.java:376)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ProviderMethod$Factory.provision(ProviderMethod.java:402)
+	at com.google.inject.internal.ProviderMethod$Factory.get(ProviderMethod.java:376)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:110)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:110)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:110)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ProviderMethod$Factory.provision(ProviderMethod.java:402)
+	at com.google.inject.internal.ProviderMethod$Factory.get(ProviderMethod.java:376)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:110)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleFieldInjector.inject(SingleFieldInjector.java:54)
+	at com.google.inject.internal.MembersInjectorImpl.injectMembers(MembersInjectorImpl.java:132)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:120)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.InjectorImpl$2$1.call(InjectorImpl.java:1019)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1085)
+	at com.google.inject.internal.InjectorImpl$2.get(InjectorImpl.java:1015)
+	at com.google.inject.internal.InjectorImpl.getInstance(InjectorImpl.java:1054)
+	at net.runelite.client.RuneLite.main(RuneLite.java:276)
+	at com.example.slayerscape.SlayerScapePluginTest.main(SlayerScapePluginTest.java:11)
+
+21) Error in custom provider, java.awt.HeadlessException:
+No X11 DISPLAY variable was set,
+or no headful library support was found,
+but this program performed an operation which requires it,
+
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  while locating net.runelite.api.Client
+    for the 4th parameter of net.runelite.client.config.ConfigManager.<init>(Unknown Source)
+  at net.runelite.client.config.ConfigManager.class(Unknown Source)
+  while locating net.runelite.client.config.ConfigManager
+    for the 1st parameter of net.runelite.client.RuneLiteModule.provideConfig(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideConfig(Unknown Source)
+  while locating net.runelite.client.config.RuneLiteConfig
+    for the 1st parameter of net.runelite.client.input.MouseManager.<init>(Unknown Source)
+  at net.runelite.client.input.MouseManager.class(Unknown Source)
+  while locating net.runelite.client.input.MouseManager
+    for the 2nd parameter of net.runelite.client.ui.ClientUI.<init>(Unknown Source)
+  at net.runelite.client.ui.ClientUI.class(Unknown Source)
+  while locating net.runelite.client.ui.ClientUI
+    for field at net.runelite.client.RuneLite.clientUI(Unknown Source)
+  at net.runelite.client.RuneLite.class(Unknown Source)
+  while locating net.runelite.client.RuneLite
+Caused by: java.awt.HeadlessException:
+No X11 DISPLAY variable was set,
+or no headful library support was found,
+but this program performed an operation which requires it,
+
+	at java.desktop/java.applet.Applet.<init>(Applet.java:81)
+	at bm.<init>(bm.java:75)
+	at client.<init>(client.java:166)
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.ReflectAccess.newInstance(ReflectAccess.java:128)
+	at java.base/jdk.internal.reflect.ReflectionFactory.newInstance(ReflectionFactory.java:304)
+	at java.base/java.lang.Class.newInstance(Class.java:725)
+	at net.runelite.client.rs.ClientLoader.loadClient(ClientLoader.java:200)
+	at net.runelite.client.rs.ClientLoader.doLoad(ClientLoader.java:92)
+	at net.runelite.client.rs.ClientLoader.get(ClientLoader.java:73)
+	at net.runelite.client.rs.ClientLoader.get(ClientLoader.java:47)
+	at net.runelite.client.RuneLiteModule.provideClient(RuneLiteModule.java:162)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at com.google.inject.internal.ProviderMethod$ReflectionProviderMethod.doProvision(ProviderMethod.java:292)
+	at com.google.inject.internal.ProviderMethod$Factory.provision(ProviderMethod.java:401)
+	at com.google.inject.internal.ProviderMethod$Factory.get(ProviderMethod.java:376)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:110)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ProviderMethod$Factory.provision(ProviderMethod.java:402)
+	at com.google.inject.internal.ProviderMethod$Factory.get(ProviderMethod.java:376)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:110)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:110)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleFieldInjector.inject(SingleFieldInjector.java:54)
+	at com.google.inject.internal.MembersInjectorImpl.injectMembers(MembersInjectorImpl.java:132)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:120)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.InjectorImpl$2$1.call(InjectorImpl.java:1019)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1085)
+	at com.google.inject.internal.InjectorImpl$2.get(InjectorImpl.java:1015)
+	at com.google.inject.internal.InjectorImpl.getInstance(InjectorImpl.java:1054)
+	at net.runelite.client.RuneLite.main(RuneLite.java:276)
+	at com.example.slayerscape.SlayerScapePluginTest.main(SlayerScapePluginTest.java:11)
+
+22) Error in custom provider, java.awt.HeadlessException:
+No X11 DISPLAY variable was set,
+or no headful library support was found,
+but this program performed an operation which requires it,
+
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  while locating net.runelite.api.Client
+    for the 1st parameter of net.runelite.client.RuneLiteModule.provideHttpClient(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideHttpClient(Unknown Source)
+  while locating okhttp3.OkHttpClient
+    for the 1st parameter of net.runelite.client.config.ConfigClient.<init>(Unknown Source)
+  while locating net.runelite.client.config.ConfigClient
+    for the 6th parameter of net.runelite.client.config.ConfigManager.<init>(Unknown Source)
+  at net.runelite.client.config.ConfigManager.class(Unknown Source)
+  while locating net.runelite.client.config.ConfigManager
+    for the 1st parameter of net.runelite.client.RuneLiteModule.provideConfig(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideConfig(Unknown Source)
+  while locating net.runelite.client.config.RuneLiteConfig
+    for the 1st parameter of net.runelite.client.input.MouseManager.<init>(Unknown Source)
+  at net.runelite.client.input.MouseManager.class(Unknown Source)
+  while locating net.runelite.client.input.MouseManager
+    for the 2nd parameter of net.runelite.client.ui.ClientUI.<init>(Unknown Source)
+  at net.runelite.client.ui.ClientUI.class(Unknown Source)
+  while locating net.runelite.client.ui.ClientUI
+    for field at net.runelite.client.RuneLite.clientUI(Unknown Source)
+  at net.runelite.client.RuneLite.class(Unknown Source)
+  while locating net.runelite.client.RuneLite
+Caused by: java.awt.HeadlessException:
+No X11 DISPLAY variable was set,
+or no headful library support was found,
+but this program performed an operation which requires it,
+
+	at java.desktop/java.applet.Applet.<init>(Applet.java:81)
+	at bm.<init>(bm.java:75)
+	at client.<init>(client.java:166)
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.ReflectAccess.newInstance(ReflectAccess.java:128)
+	at java.base/jdk.internal.reflect.ReflectionFactory.newInstance(ReflectionFactory.java:304)
+	at java.base/java.lang.Class.newInstance(Class.java:725)
+	at net.runelite.client.rs.ClientLoader.loadClient(ClientLoader.java:200)
+	at net.runelite.client.rs.ClientLoader.doLoad(ClientLoader.java:92)
+	at net.runelite.client.rs.ClientLoader.get(ClientLoader.java:73)
+	at net.runelite.client.rs.ClientLoader.get(ClientLoader.java:47)
+	at net.runelite.client.RuneLiteModule.provideClient(RuneLiteModule.java:162)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at com.google.inject.internal.ProviderMethod$ReflectionProviderMethod.doProvision(ProviderMethod.java:292)
+	at com.google.inject.internal.ProviderMethod$Factory.provision(ProviderMethod.java:401)
+	at com.google.inject.internal.ProviderMethod$Factory.get(ProviderMethod.java:376)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ProviderMethod$Factory.provision(ProviderMethod.java:402)
+	at com.google.inject.internal.ProviderMethod$Factory.get(ProviderMethod.java:376)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:110)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:110)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ProviderMethod$Factory.provision(ProviderMethod.java:402)
+	at com.google.inject.internal.ProviderMethod$Factory.get(ProviderMethod.java:376)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:110)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:110)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleFieldInjector.inject(SingleFieldInjector.java:54)
+	at com.google.inject.internal.MembersInjectorImpl.injectMembers(MembersInjectorImpl.java:132)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:120)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.InjectorImpl$2$1.call(InjectorImpl.java:1019)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1085)
+	at com.google.inject.internal.InjectorImpl$2.get(InjectorImpl.java:1015)
+	at com.google.inject.internal.InjectorImpl.getInstance(InjectorImpl.java:1054)
+	at net.runelite.client.RuneLite.main(RuneLite.java:276)
+	at com.example.slayerscape.SlayerScapePluginTest.main(SlayerScapePluginTest.java:11)
+
+23) Error in custom provider, java.awt.HeadlessException:
+No X11 DISPLAY variable was set,
+or no headful library support was found,
+but this program performed an operation which requires it,
+
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  while locating net.runelite.api.Client
+    for the 1st parameter of net.runelite.client.RuneLiteModule.provideHttpClient(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideHttpClient(Unknown Source)
+  while locating okhttp3.OkHttpClient
+    for the 1st parameter of net.runelite.client.account.AccountClient.<init>(Unknown Source)
+  while locating net.runelite.client.account.AccountClient
+    for the 3rd parameter of net.runelite.client.account.SessionManager.<init>(Unknown Source)
+  at net.runelite.client.RuneLiteModule.configure(RuneLiteModule.java:137)
+  while locating net.runelite.client.account.SessionManager
+    for the 8th parameter of net.runelite.client.config.ConfigManager.<init>(Unknown Source)
+  at net.runelite.client.config.ConfigManager.class(Unknown Source)
+  while locating net.runelite.client.config.ConfigManager
+    for the 1st parameter of net.runelite.client.RuneLiteModule.provideConfig(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideConfig(Unknown Source)
+  while locating net.runelite.client.config.RuneLiteConfig
+    for the 1st parameter of net.runelite.client.input.MouseManager.<init>(Unknown Source)
+  at net.runelite.client.input.MouseManager.class(Unknown Source)
+  while locating net.runelite.client.input.MouseManager
+    for the 2nd parameter of net.runelite.client.ui.ClientUI.<init>(Unknown Source)
+  at net.runelite.client.ui.ClientUI.class(Unknown Source)
+  while locating net.runelite.client.ui.ClientUI
+    for field at net.runelite.client.RuneLite.clientUI(Unknown Source)
+  at net.runelite.client.RuneLite.class(Unknown Source)
+  while locating net.runelite.client.RuneLite
+Caused by: java.awt.HeadlessException:
+No X11 DISPLAY variable was set,
+or no headful library support was found,
+but this program performed an operation which requires it,
+
+	at java.desktop/java.applet.Applet.<init>(Applet.java:81)
+	at bm.<init>(bm.java:75)
+	at client.<init>(client.java:166)
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.ReflectAccess.newInstance(ReflectAccess.java:128)
+	at java.base/jdk.internal.reflect.ReflectionFactory.newInstance(ReflectionFactory.java:304)
+	at java.base/java.lang.Class.newInstance(Class.java:725)
+	at net.runelite.client.rs.ClientLoader.loadClient(ClientLoader.java:200)
+	at net.runelite.client.rs.ClientLoader.doLoad(ClientLoader.java:92)
+	at net.runelite.client.rs.ClientLoader.get(ClientLoader.java:73)
+	at net.runelite.client.rs.ClientLoader.get(ClientLoader.java:47)
+	at net.runelite.client.RuneLiteModule.provideClient(RuneLiteModule.java:162)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at com.google.inject.internal.ProviderMethod$ReflectionProviderMethod.doProvision(ProviderMethod.java:292)
+	at com.google.inject.internal.ProviderMethod$Factory.provision(ProviderMethod.java:401)
+	at com.google.inject.internal.ProviderMethod$Factory.get(ProviderMethod.java:376)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ProviderMethod$Factory.provision(ProviderMethod.java:402)
+	at com.google.inject.internal.ProviderMethod$Factory.get(ProviderMethod.java:376)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:110)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:110)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:110)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ProviderMethod$Factory.provision(ProviderMethod.java:402)
+	at com.google.inject.internal.ProviderMethod$Factory.get(ProviderMethod.java:376)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:110)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:110)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleFieldInjector.inject(SingleFieldInjector.java:54)
+	at com.google.inject.internal.MembersInjectorImpl.injectMembers(MembersInjectorImpl.java:132)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:120)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.InjectorImpl$2$1.call(InjectorImpl.java:1019)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1085)
+	at com.google.inject.internal.InjectorImpl$2.get(InjectorImpl.java:1015)
+	at com.google.inject.internal.InjectorImpl.getInstance(InjectorImpl.java:1054)
+	at net.runelite.client.RuneLite.main(RuneLite.java:276)
+	at com.example.slayerscape.SlayerScapePluginTest.main(SlayerScapePluginTest.java:11)
+
+24) Error in custom provider, java.awt.HeadlessException:
+No X11 DISPLAY variable was set,
+or no headful library support was found,
+but this program performed an operation which requires it,
+
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  while locating net.runelite.api.Client
+    for the 3rd parameter of net.runelite.client.ui.ClientUI.<init>(Unknown Source)
+  at net.runelite.client.ui.ClientUI.class(Unknown Source)
+  while locating net.runelite.client.ui.ClientUI
+    for field at net.runelite.client.RuneLite.clientUI(Unknown Source)
+  at net.runelite.client.RuneLite.class(Unknown Source)
+  while locating net.runelite.client.RuneLite
+Caused by: java.awt.HeadlessException (same stack trace as error #12)
+25) Error in custom provider, java.awt.HeadlessException:
+No X11 DISPLAY variable was set,
+or no headful library support was found,
+but this program performed an operation which requires it,
+
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  while locating net.runelite.api.Client
+    for the 4th parameter of net.runelite.client.config.ConfigManager.<init>(Unknown Source)
+  at net.runelite.client.config.ConfigManager.class(Unknown Source)
+  while locating net.runelite.client.config.ConfigManager
+    for the 4th parameter of net.runelite.client.ui.ClientUI.<init>(Unknown Source)
+  at net.runelite.client.ui.ClientUI.class(Unknown Source)
+  while locating net.runelite.client.ui.ClientUI
+    for field at net.runelite.client.RuneLite.clientUI(Unknown Source)
+  at net.runelite.client.RuneLite.class(Unknown Source)
+  while locating net.runelite.client.RuneLite
+Caused by: java.awt.HeadlessException (same stack trace as error #1)
+26) Error in custom provider, java.awt.HeadlessException:
+No X11 DISPLAY variable was set,
+or no headful library support was found,
+but this program performed an operation which requires it,
+
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  while locating net.runelite.api.Client
+    for the 1st parameter of net.runelite.client.RuneLiteModule.provideHttpClient(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideHttpClient(Unknown Source)
+  while locating okhttp3.OkHttpClient
+    for the 1st parameter of net.runelite.client.config.ConfigClient.<init>(Unknown Source)
+  while locating net.runelite.client.config.ConfigClient
+    for the 6th parameter of net.runelite.client.config.ConfigManager.<init>(Unknown Source)
+  at net.runelite.client.config.ConfigManager.class(Unknown Source)
+  while locating net.runelite.client.config.ConfigManager
+    for the 4th parameter of net.runelite.client.ui.ClientUI.<init>(Unknown Source)
+  at net.runelite.client.ui.ClientUI.class(Unknown Source)
+  while locating net.runelite.client.ui.ClientUI
+    for field at net.runelite.client.RuneLite.clientUI(Unknown Source)
+  at net.runelite.client.RuneLite.class(Unknown Source)
+  while locating net.runelite.client.RuneLite
+Caused by: java.awt.HeadlessException (same stack trace as error #2)
+27) Error in custom provider, java.awt.HeadlessException:
+No X11 DISPLAY variable was set,
+or no headful library support was found,
+but this program performed an operation which requires it,
+
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  while locating net.runelite.api.Client
+    for the 1st parameter of net.runelite.client.RuneLiteModule.provideHttpClient(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideHttpClient(Unknown Source)
+  while locating okhttp3.OkHttpClient
+    for the 1st parameter of net.runelite.client.account.AccountClient.<init>(Unknown Source)
+  while locating net.runelite.client.account.AccountClient
+    for the 3rd parameter of net.runelite.client.account.SessionManager.<init>(Unknown Source)
+  at net.runelite.client.RuneLiteModule.configure(RuneLiteModule.java:137)
+  while locating net.runelite.client.account.SessionManager
+    for the 8th parameter of net.runelite.client.config.ConfigManager.<init>(Unknown Source)
+  at net.runelite.client.config.ConfigManager.class(Unknown Source)
+  while locating net.runelite.client.config.ConfigManager
+    for the 4th parameter of net.runelite.client.ui.ClientUI.<init>(Unknown Source)
+  at net.runelite.client.ui.ClientUI.class(Unknown Source)
+  while locating net.runelite.client.ui.ClientUI
+    for field at net.runelite.client.RuneLite.clientUI(Unknown Source)
+  at net.runelite.client.RuneLite.class(Unknown Source)
+  while locating net.runelite.client.RuneLite
+Caused by: java.awt.HeadlessException (same stack trace as error #3)
+28) Error in custom provider, java.awt.HeadlessException:
+No X11 DISPLAY variable was set,
+or no headful library support was found,
+but this program performed an operation which requires it,
+
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  while locating net.runelite.api.Client
+    for the 4th parameter of net.runelite.client.config.ConfigManager.<init>(Unknown Source)
+  at net.runelite.client.config.ConfigManager.class(Unknown Source)
+  while locating net.runelite.client.config.ConfigManager
+    for the 1st parameter of net.runelite.client.ui.overlay.OverlayManager.<init>(Unknown Source)
+  at net.runelite.client.ui.overlay.OverlayManager.class(Unknown Source)
+  while locating net.runelite.client.ui.overlay.OverlayManager
+    for field at net.runelite.client.RuneLite.overlayManager(Unknown Source)
+  at net.runelite.client.RuneLite.class(Unknown Source)
+  while locating net.runelite.client.RuneLite
+Caused by: java.awt.HeadlessException (same stack trace as error #1)
+29) Error in custom provider, java.awt.HeadlessException:
+No X11 DISPLAY variable was set,
+or no headful library support was found,
+but this program performed an operation which requires it,
+
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  while locating net.runelite.api.Client
+    for the 1st parameter of net.runelite.client.RuneLiteModule.provideHttpClient(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideHttpClient(Unknown Source)
+  while locating okhttp3.OkHttpClient
+    for the 1st parameter of net.runelite.client.config.ConfigClient.<init>(Unknown Source)
+  while locating net.runelite.client.config.ConfigClient
+    for the 6th parameter of net.runelite.client.config.ConfigManager.<init>(Unknown Source)
+  at net.runelite.client.config.ConfigManager.class(Unknown Source)
+  while locating net.runelite.client.config.ConfigManager
+    for the 1st parameter of net.runelite.client.ui.overlay.OverlayManager.<init>(Unknown Source)
+  at net.runelite.client.ui.overlay.OverlayManager.class(Unknown Source)
+  while locating net.runelite.client.ui.overlay.OverlayManager
+    for field at net.runelite.client.RuneLite.overlayManager(Unknown Source)
+  at net.runelite.client.RuneLite.class(Unknown Source)
+  while locating net.runelite.client.RuneLite
+Caused by: java.awt.HeadlessException (same stack trace as error #2)
+30) Error in custom provider, java.awt.HeadlessException:
+No X11 DISPLAY variable was set,
+or no headful library support was found,
+but this program performed an operation which requires it,
+
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  while locating net.runelite.api.Client
+    for the 1st parameter of net.runelite.client.RuneLiteModule.provideHttpClient(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideHttpClient(Unknown Source)
+  while locating okhttp3.OkHttpClient
+    for the 1st parameter of net.runelite.client.account.AccountClient.<init>(Unknown Source)
+  while locating net.runelite.client.account.AccountClient
+    for the 3rd parameter of net.runelite.client.account.SessionManager.<init>(Unknown Source)
+  at net.runelite.client.RuneLiteModule.configure(RuneLiteModule.java:137)
+  while locating net.runelite.client.account.SessionManager
+    for the 8th parameter of net.runelite.client.config.ConfigManager.<init>(Unknown Source)
+  at net.runelite.client.config.ConfigManager.class(Unknown Source)
+  while locating net.runelite.client.config.ConfigManager
+    for the 1st parameter of net.runelite.client.ui.overlay.OverlayManager.<init>(Unknown Source)
+  at net.runelite.client.ui.overlay.OverlayManager.class(Unknown Source)
+  while locating net.runelite.client.ui.overlay.OverlayManager
+    for field at net.runelite.client.RuneLite.overlayManager(Unknown Source)
+  at net.runelite.client.RuneLite.class(Unknown Source)
+  while locating net.runelite.client.RuneLite
+Caused by: java.awt.HeadlessException (same stack trace as error #3)
+31) Error in custom provider, java.awt.HeadlessException:
+No X11 DISPLAY variable was set,
+or no headful library support was found,
+but this program performed an operation which requires it,
+
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  while locating net.runelite.api.Client
+    for the 4th parameter of net.runelite.client.config.ConfigManager.<init>(Unknown Source)
+  at net.runelite.client.config.ConfigManager.class(Unknown Source)
+  while locating net.runelite.client.config.ConfigManager
+    for the 1st parameter of net.runelite.client.RuneLiteModule.provideConfig(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideConfig(Unknown Source)
+  while locating net.runelite.client.config.RuneLiteConfig
+    for the 2nd parameter of net.runelite.client.ui.overlay.OverlayManager.<init>(Unknown Source)
+  at net.runelite.client.ui.overlay.OverlayManager.class(Unknown Source)
+  while locating net.runelite.client.ui.overlay.OverlayManager
+    for field at net.runelite.client.RuneLite.overlayManager(Unknown Source)
+  at net.runelite.client.RuneLite.class(Unknown Source)
+  while locating net.runelite.client.RuneLite
+Caused by: java.awt.HeadlessException (same stack trace as error #18)
+32) Error in custom provider, java.awt.HeadlessException:
+No X11 DISPLAY variable was set,
+or no headful library support was found,
+but this program performed an operation which requires it,
+
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  while locating net.runelite.api.Client
+    for the 1st parameter of net.runelite.client.RuneLiteModule.provideHttpClient(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideHttpClient(Unknown Source)
+  while locating okhttp3.OkHttpClient
+    for the 1st parameter of net.runelite.client.config.ConfigClient.<init>(Unknown Source)
+  while locating net.runelite.client.config.ConfigClient
+    for the 6th parameter of net.runelite.client.config.ConfigManager.<init>(Unknown Source)
+  at net.runelite.client.config.ConfigManager.class(Unknown Source)
+  while locating net.runelite.client.config.ConfigManager
+    for the 1st parameter of net.runelite.client.RuneLiteModule.provideConfig(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideConfig(Unknown Source)
+  while locating net.runelite.client.config.RuneLiteConfig
+    for the 2nd parameter of net.runelite.client.ui.overlay.OverlayManager.<init>(Unknown Source)
+  at net.runelite.client.ui.overlay.OverlayManager.class(Unknown Source)
+  while locating net.runelite.client.ui.overlay.OverlayManager
+    for field at net.runelite.client.RuneLite.overlayManager(Unknown Source)
+  at net.runelite.client.RuneLite.class(Unknown Source)
+  while locating net.runelite.client.RuneLite
+Caused by: java.awt.HeadlessException (same stack trace as error #19)
+33) Error in custom provider, java.awt.HeadlessException:
+No X11 DISPLAY variable was set,
+or no headful library support was found,
+but this program performed an operation which requires it,
+
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  while locating net.runelite.api.Client
+    for the 1st parameter of net.runelite.client.RuneLiteModule.provideHttpClient(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideHttpClient(Unknown Source)
+  while locating okhttp3.OkHttpClient
+    for the 1st parameter of net.runelite.client.account.AccountClient.<init>(Unknown Source)
+  while locating net.runelite.client.account.AccountClient
+    for the 3rd parameter of net.runelite.client.account.SessionManager.<init>(Unknown Source)
+  at net.runelite.client.RuneLiteModule.configure(RuneLiteModule.java:137)
+  while locating net.runelite.client.account.SessionManager
+    for the 8th parameter of net.runelite.client.config.ConfigManager.<init>(Unknown Source)
+  at net.runelite.client.config.ConfigManager.class(Unknown Source)
+  while locating net.runelite.client.config.ConfigManager
+    for the 1st parameter of net.runelite.client.RuneLiteModule.provideConfig(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideConfig(Unknown Source)
+  while locating net.runelite.client.config.RuneLiteConfig
+    for the 2nd parameter of net.runelite.client.ui.overlay.OverlayManager.<init>(Unknown Source)
+  at net.runelite.client.ui.overlay.OverlayManager.class(Unknown Source)
+  while locating net.runelite.client.ui.overlay.OverlayManager
+    for field at net.runelite.client.RuneLite.overlayManager(Unknown Source)
+  at net.runelite.client.RuneLite.class(Unknown Source)
+  while locating net.runelite.client.RuneLite
+Caused by: java.awt.HeadlessException (same stack trace as error #20)
+34) Error in custom provider, java.awt.HeadlessException:
+No X11 DISPLAY variable was set,
+or no headful library support was found,
+but this program performed an operation which requires it,
+
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  while locating net.runelite.api.Client
+    for field at net.runelite.client.RuneLite.client(Unknown Source)
+  at net.runelite.client.RuneLite.class(Unknown Source)
+  while locating net.runelite.client.RuneLite
+Caused by: java.awt.HeadlessException:
+No X11 DISPLAY variable was set,
+or no headful library support was found,
+but this program performed an operation which requires it,
+
+	at java.desktop/java.applet.Applet.<init>(Applet.java:81)
+	at bm.<init>(bm.java:75)
+	at client.<init>(client.java:166)
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.ReflectAccess.newInstance(ReflectAccess.java:128)
+	at java.base/jdk.internal.reflect.ReflectionFactory.newInstance(ReflectionFactory.java:304)
+	at java.base/java.lang.Class.newInstance(Class.java:725)
+	at net.runelite.client.rs.ClientLoader.loadClient(ClientLoader.java:200)
+	at net.runelite.client.rs.ClientLoader.doLoad(ClientLoader.java:92)
+	at net.runelite.client.rs.ClientLoader.get(ClientLoader.java:73)
+	at net.runelite.client.rs.ClientLoader.get(ClientLoader.java:47)
+	at net.runelite.client.RuneLiteModule.provideClient(RuneLiteModule.java:162)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at com.google.inject.internal.ProviderMethod$ReflectionProviderMethod.doProvision(ProviderMethod.java:292)
+	at com.google.inject.internal.ProviderMethod$Factory.provision(ProviderMethod.java:401)
+	at com.google.inject.internal.ProviderMethod$Factory.get(ProviderMethod.java:376)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleFieldInjector.inject(SingleFieldInjector.java:54)
+	at com.google.inject.internal.MembersInjectorImpl.injectMembers(MembersInjectorImpl.java:132)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:120)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.InjectorImpl$2$1.call(InjectorImpl.java:1019)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1085)
+	at com.google.inject.internal.InjectorImpl$2.get(InjectorImpl.java:1015)
+	at com.google.inject.internal.InjectorImpl.getInstance(InjectorImpl.java:1054)
+	at net.runelite.client.RuneLite.main(RuneLite.java:276)
+	at com.example.slayerscape.SlayerScapePluginTest.main(SlayerScapePluginTest.java:11)
+
+35) Error in custom provider, java.awt.HeadlessException:
+No X11 DISPLAY variable was set,
+or no headful library support was found,
+but this program performed an operation which requires it,
+
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideClient(Unknown Source)
+  while locating net.runelite.api.Client
+    for the 1st parameter of net.runelite.client.RuneLiteModule.provideHttpClient(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideHttpClient(Unknown Source)
+  while locating okhttp3.OkHttpClient
+    for the 1st parameter of net.runelite.client.RuneLiteModule.provideTelemetry(Unknown Source)
+  at net.runelite.client.RuneLiteModule.provideTelemetry(Unknown Source)
+  while locating net.runelite.client.TelemetryClient
+    for field at net.runelite.client.RuneLite.telemetryClient(Unknown Source)
+  at net.runelite.client.RuneLite.class(Unknown Source)
+  while locating net.runelite.client.RuneLite
+Caused by: java.awt.HeadlessException:
+No X11 DISPLAY variable was set,
+or no headful library support was found,
+but this program performed an operation which requires it,
+
+	at java.desktop/java.applet.Applet.<init>(Applet.java:81)
+	at bm.<init>(bm.java:75)
+	at client.<init>(client.java:166)
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.ReflectAccess.newInstance(ReflectAccess.java:128)
+	at java.base/jdk.internal.reflect.ReflectionFactory.newInstance(ReflectionFactory.java:304)
+	at java.base/java.lang.Class.newInstance(Class.java:725)
+	at net.runelite.client.rs.ClientLoader.loadClient(ClientLoader.java:200)
+	at net.runelite.client.rs.ClientLoader.doLoad(ClientLoader.java:92)
+	at net.runelite.client.rs.ClientLoader.get(ClientLoader.java:73)
+	at net.runelite.client.rs.ClientLoader.get(ClientLoader.java:47)
+	at net.runelite.client.RuneLiteModule.provideClient(RuneLiteModule.java:162)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at com.google.inject.internal.ProviderMethod$ReflectionProviderMethod.doProvision(ProviderMethod.java:292)
+	at com.google.inject.internal.ProviderMethod$Factory.provision(ProviderMethod.java:401)
+	at com.google.inject.internal.ProviderMethod$Factory.get(ProviderMethod.java:376)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ProviderMethod$Factory.provision(ProviderMethod.java:402)
+	at com.google.inject.internal.ProviderMethod$Factory.get(ProviderMethod.java:376)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleParameterInjector.inject(SingleParameterInjector.java:38)
+	at com.google.inject.internal.SingleParameterInjector.getAll(SingleParameterInjector.java:62)
+	at com.google.inject.internal.ProviderMethod$Factory.provision(ProviderMethod.java:402)
+	at com.google.inject.internal.ProviderMethod$Factory.get(ProviderMethod.java:376)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.SingleFieldInjector.inject(SingleFieldInjector.java:54)
+	at com.google.inject.internal.MembersInjectorImpl.injectMembers(MembersInjectorImpl.java:132)
+	at com.google.inject.internal.ConstructorInjector.provision(ConstructorInjector.java:120)
+	at com.google.inject.internal.ConstructorInjector.construct(ConstructorInjector.java:90)
+	at com.google.inject.internal.ConstructorBindingImpl$Factory.get(ConstructorBindingImpl.java:268)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:194)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.InjectorImpl$2$1.call(InjectorImpl.java:1019)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1085)
+	at com.google.inject.internal.InjectorImpl$2.get(InjectorImpl.java:1015)
+	at com.google.inject.internal.InjectorImpl.getInstance(InjectorImpl.java:1054)
+	at net.runelite.client.RuneLite.main(RuneLite.java:276)
+	at com.example.slayerscape.SlayerScapePluginTest.main(SlayerScapePluginTest.java:11)
+
+35 errors
+	at com.google.inject.internal.InjectorImpl$2.get(InjectorImpl.java:1028)
+	at com.google.inject.internal.InjectorImpl.getInstance(InjectorImpl.java:1054)
+	at net.runelite.client.RuneLite.main(RuneLite.java:276)
+	at com.example.slayerscape.SlayerScapePluginTest.main(SlayerScapePluginTest.java:11)
+2025-12-09 19:03:14 UTC [AWT-EventQueue-0] ERROR net.runelite.client.RuneLite - Uncaught exception:
+java.awt.HeadlessException:
+No X11 DISPLAY variable was set,
+or no headful library support was found,
+but this program performed an operation which requires it,
+
+	at java.desktop/java.awt.GraphicsEnvironment.checkHeadless(GraphicsEnvironment.java:164)
+	at java.desktop/java.awt.Window.<init>(Window.java:553)
+	at java.desktop/java.awt.Frame.<init>(Frame.java:428)
+	at java.desktop/java.awt.Frame.<init>(Frame.java:393)
+	at java.desktop/javax.swing.SwingUtilities$SharedOwnerFrame.<init>(SwingUtilities.java:1925)
+	at java.desktop/javax.swing.SwingUtilities.getSharedOwnerFrame(SwingUtilities.java:2001)
+	at java.desktop/javax.swing.JDialog.<init>(JDialog.java:276)
+	at java.desktop/javax.swing.JDialog.<init>(JDialog.java:210)
+	at java.desktop/javax.swing.JDialog.<init>(JDialog.java:158)
+	at net.runelite.client.ui.FatalErrorDialog.<init>(FatalErrorDialog.java:66)
+	at net.runelite.client.RuneLite.lambda$main$3(RuneLite.java:286)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:318)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:773)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:720)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:714)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:742)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
