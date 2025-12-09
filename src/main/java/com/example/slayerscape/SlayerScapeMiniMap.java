@@ -27,6 +27,9 @@ public class SlayerScapeMiniMap extends JPanel
     private static final int EDGE_THRESHOLD = 30; // pixels from edge to trigger scroll
     private static final int SCROLL_SPEED = 5;
 
+    // Drag-to-pan
+    private Point lastDragPoint = null;
+
     public SlayerScapeMiniMap(SlayerManager manager, Consumer<GridTile> onTileSelected)
     {
         this.manager = manager;
@@ -40,12 +43,10 @@ public class SlayerScapeMiniMap extends JPanel
         offsetX = (viewSize - gridSizePx) / 2.0;
         offsetY = (viewSize - gridSizePx) / 2.0;
 
-        // Just set a fixed size for the panel, or fill parent?
-        // If we want panning, we should probably take up all available space.
-        // But for now, let's set a size that fits the sidebar width nicely, but maybe taller?
+        // Set a fixed size for the panel to fit in the sidebar comfortably
         setPreferredSize(new Dimension(225, 225));
 
-        // Timer for smooth scrolling
+        // Timer for smooth scrolling (Edge scrolling)
         scrollTimer = new Timer(16, e -> {
             if (scrollSpeedX != 0 || scrollSpeedY != 0) {
                 offsetX += scrollSpeedX;
@@ -61,11 +62,15 @@ public class SlayerScapeMiniMap extends JPanel
             @Override
             public void mousePressed(MouseEvent e)
             {
-                // Calculate clicked tile based on offset
+                // If dragging, we start tracking here
+                lastDragPoint = e.getPoint();
+
+                // Check if it's a click on a tile (only if not moving much?)
+                // For simplicity, we select on press, but if dragged, we might want to ignore selection logic?
+                // Let's select on press for now.
+
                 int clickX = e.getX();
                 int clickY = e.getY();
-
-                // Inverse translation
                 int gridX = (int)((clickX - offsetX) / (TILE_SIZE + GAP));
                 int gridY = (int)((clickY - offsetY) / (TILE_SIZE + GAP));
 
@@ -78,16 +83,24 @@ public class SlayerScapeMiniMap extends JPanel
             }
 
             @Override
+            public void mouseReleased(MouseEvent e)
+            {
+                lastDragPoint = null;
+            }
+
+            @Override
             public void mouseEntered(MouseEvent e)
             {
-                // Ensure focus or activation if needed
+                // Regain focus if needed
             }
 
             @Override
             public void mouseExited(MouseEvent e)
             {
+                // Stop edge scrolling if mouse leaves the component
                 scrollSpeedX = 0;
                 scrollSpeedY = 0;
+                lastDragPoint = null;
             }
 
             @Override
@@ -99,6 +112,20 @@ public class SlayerScapeMiniMap extends JPanel
             @Override
             public void mouseDragged(MouseEvent e)
             {
+                // Drag to pan
+                if (lastDragPoint != null) {
+                    int dx = e.getX() - lastDragPoint.x;
+                    int dy = e.getY() - lastDragPoint.y;
+
+                    offsetX += dx;
+                    offsetY += dy;
+                    limitOffset();
+                    repaint();
+
+                    lastDragPoint = e.getPoint();
+                }
+
+                // Also update edge scroll speed if dragging near edge
                 updateScrollSpeed(e.getX(), e.getY());
             }
         };
@@ -120,12 +147,14 @@ public class SlayerScapeMiniMap extends JPanel
         scrollSpeedX = 0;
         scrollSpeedY = 0;
 
+        // Check horizontal edge
         if (mouseX < EDGE_THRESHOLD) {
             scrollSpeedX = SCROLL_SPEED;
         } else if (mouseX > w - EDGE_THRESHOLD) {
             scrollSpeedX = -SCROLL_SPEED;
         }
 
+        // Check vertical edge
         if (mouseY < EDGE_THRESHOLD) {
             scrollSpeedY = SCROLL_SPEED;
         } else if (mouseY > h - EDGE_THRESHOLD) {
@@ -139,22 +168,16 @@ public class SlayerScapeMiniMap extends JPanel
         int w = getWidth();
         int h = getHeight();
 
-        // If grid is smaller than view, center it.
-        // Otherwise, clamp.
-
-        // Min offset (scrolled to far right/bottom): w - gridSizePx
-        // Max offset (scrolled to top/left): 0 (or padding?)
-
-        // Actually, we want to allow scrolling until the edge of the grid aligns with the edge of the view.
-        // Max offset: 0 (or slight positive for padding)
-        // Min offset: w - gridSizePx
+        // Calculate min/max offsets
+        // Min offset: w - gridSizePx (scrolled to far right/bottom)
+        // Max offset: 0 (scrolled to top/left)
 
         int minX = w - gridSizePx;
         int maxX = 0;
         int minY = h - gridSizePx;
         int maxY = 0;
 
-        // Add some padding/margin
+        // Add padding
         int padding = 20;
         minX -= padding;
         maxX += padding;
@@ -187,12 +210,10 @@ public class SlayerScapeMiniMap extends JPanel
     {
         super.paintComponent(g);
 
-        // Ensure offset is valid before painting (handles resize)
         limitOffset();
 
         Graphics2D g2d = (Graphics2D) g;
 
-        // Apply translation
         g2d.translate(offsetX, offsetY);
 
         for (int x = 0; x < SlayerManager.GRID_SIZE; x++)
@@ -210,7 +231,6 @@ public class SlayerScapeMiniMap extends JPanel
                 } else if (tile.isUnlocked) {
                     g2d.setColor(new Color(200, 200, 0)); // Yellow/Gold
                 } else {
-                    // Fog of War Logic
                     if (manager.isNeighborUnlocked(x, y)) {
                         g2d.setColor(Color.GRAY); // Visible/Reachable
                     } else {
@@ -236,7 +256,6 @@ public class SlayerScapeMiniMap extends JPanel
             }
         }
 
-        // Reset translation for any overlay? No overlay needed here.
         g2d.translate(-offsetX, -offsetY);
     }
 }
