@@ -3,8 +3,13 @@ package com.example.slayerscape;
 import net.runelite.client.game.ItemManager;
 import net.runelite.client.game.SpriteManager;
 import net.runelite.client.ui.PluginPanel;
+import net.runelite.client.util.AsyncBufferedImage;
+import net.runelite.client.ui.FontManager;
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.image.BufferedImage;
 
 public class SlayerScapePanel extends PluginPanel
 {
@@ -12,17 +17,28 @@ public class SlayerScapePanel extends PluginPanel
     private final JLabel keyLabel;
     private final JProgressBar xpProgressBar;
     private final SlayerScapeConfig config;
-    private final SlayerScapeMapCanvas mapCanvas;
+    private final ItemManager itemManager;
+    private final SpriteManager spriteManager;
+
+    private final SlayerScapeMiniMap miniMap;
+    private final JPanel detailPanel;
+    private final JLabel detailTitle;
+    private final JLabel detailIcon;
+    private final JLabel detailStatus;
+    private final JButton unlockButton;
 
     public SlayerScapePanel(SlayerManager manager, SlayerScapeConfig config, ItemManager itemManager, SpriteManager spriteManager)
     {
         this.manager = manager;
         this.config = config;
+        this.itemManager = itemManager;
+        this.spriteManager = spriteManager;
 
         setLayout(new BorderLayout());
 
-        // Top bar: Key count and XP Progress
+        // --- Top Bar ---
         JPanel topPanel = new JPanel(new BorderLayout());
+        topPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 
         keyLabel = new JLabel("Keys: " + manager.slayerKeys);
         keyLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -35,17 +51,48 @@ public class SlayerScapePanel extends PluginPanel
 
         add(topPanel, BorderLayout.NORTH);
 
-        // Center: The Grid Canvas wrapped in ScrollPane
-        mapCanvas = new SlayerScapeMapCanvas(manager, itemManager, this::refreshUI);
+        // --- Center: MiniMap + Details ---
+        JPanel centerContainer = new JPanel();
+        centerContainer.setLayout(new BoxLayout(centerContainer, BoxLayout.Y_AXIS));
 
-        JScrollPane scrollPane = new JScrollPane(mapCanvas);
-        scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
-        scrollPane.getVerticalScrollBar().setUnitIncrement(16);
+        // Mini Map
+        miniMap = new SlayerScapeMiniMap(manager, this::updateDetailView);
+        // Center the minimap
+        JPanel mapWrapper = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        mapWrapper.add(miniMap);
+        centerContainer.add(mapWrapper);
 
-        add(scrollPane, BorderLayout.CENTER);
+        // Detail Panel
+        detailPanel = new JPanel();
+        detailPanel.setLayout(new BoxLayout(detailPanel, BoxLayout.Y_AXIS));
+        detailPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
 
-        SwingUtilities.invokeLater(this::refreshUI);
+        detailIcon = new JLabel();
+        detailIcon.setAlignmentX(Component.CENTER_ALIGNMENT);
+        detailPanel.add(detailIcon);
+
+        detailPanel.add(Box.createVerticalStrut(10));
+
+        detailTitle = new JLabel("Select a Tile");
+        detailTitle.setFont(FontManager.getRunescapeBoldFont());
+        detailTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
+        detailPanel.add(detailTitle);
+
+        detailStatus = new JLabel("");
+        detailStatus.setAlignmentX(Component.CENTER_ALIGNMENT);
+        detailPanel.add(detailStatus);
+
+        detailPanel.add(Box.createVerticalStrut(10));
+
+        unlockButton = new JButton("Unlock (1 Key)");
+        unlockButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        unlockButton.addActionListener(this::onUnlockClicked);
+        unlockButton.setVisible(false);
+        detailPanel.add(unlockButton);
+
+        centerContainer.add(detailPanel);
+
+        add(centerContainer, BorderLayout.CENTER);
     }
 
     public void refreshUI()
@@ -64,6 +111,67 @@ public class SlayerScapePanel extends PluginPanel
             xpProgressBar.setVisible(false);
         }
 
-        mapCanvas.repaint();
+        miniMap.repaint();
+        // Update details for currently selected tile
+        updateDetailView(miniMap.getSelectedTile());
+    }
+
+    private void updateDetailView(GridTile tile)
+    {
+        if (tile == null) return;
+
+        // Title
+        detailTitle.setText("<html><center>" + tile.requirementText + "</center></html>");
+
+        // Status
+        if (tile.isCompleted) {
+            detailStatus.setText("Completed");
+            detailStatus.setForeground(Color.GREEN);
+            unlockButton.setVisible(false);
+        } else if (tile.isUnlocked) {
+            detailStatus.setText("Active Task");
+            detailStatus.setForeground(Color.YELLOW);
+            unlockButton.setVisible(false);
+        } else {
+            detailStatus.setText("Locked");
+            detailStatus.setForeground(Color.GRAY);
+            unlockButton.setVisible(true);
+            unlockButton.setEnabled(manager.slayerKeys > 0);
+            unlockButton.setText("Unlock (1 Key)");
+        }
+
+        // Icon logic (Safe Async)
+        if (tile.isUnlocked) {
+            if (tile.isSprite) {
+                // To fix crash: We cannot call getSprite on EDT.
+                // We leave the icon blank or set a default.
+                // NOTE: To properly fix this, we would need to pass the Client Thread and schedule a callback.
+                // For now, text is sufficient to prevent crashing.
+                detailIcon.setIcon(null);
+                detailIcon.setText("[Skill Icon]");
+            } else if (tile.iconId != -1) {
+                AsyncBufferedImage img = itemManager.getImage(tile.iconId);
+                detailIcon.setIcon(new ImageIcon(img));
+                detailIcon.setText("");
+            } else {
+                detailIcon.setIcon(null);
+                detailIcon.setText("");
+            }
+        } else {
+            detailIcon.setIcon(null); // Locked icon?
+            detailIcon.setText("?");
+        }
+    }
+
+    private void onUnlockClicked(ActionEvent e)
+    {
+        GridTile tile = miniMap.getSelectedTile();
+        if (tile != null && !tile.isUnlocked)
+        {
+            if (manager.spendKey(tile.x, tile.y))
+            {
+                refreshUI();
+            }
+        }
     }
 }
