@@ -1,18 +1,58 @@
 package com.example.slayerscape;
 
+/**
+ * Represents a tile on the SlayerScape grid.
+ * Holds the coordinates, state (locked/completed), and the assigned Task.
+ */
 public class GridTile
 {
-    public int x, y;
-    public boolean isUnlocked = false; // Can we see the challenge?
-    public boolean isCompleted = false; // Have we finished the challenge?
-    public String requirementText; // e.g., "Kill 10 Goblins" or "Mining Level 5"
-    public int iconId = -1; // Item ID or Sprite ID
-    public boolean isSprite = false; // true if iconId is a sprite, false if item ID
+    private final int x;
+    private final int y;
 
-    public GridTile(int x, int y, String req)
+    private boolean isUnlocked = false; // Is the tile visible/active?
+    private boolean isCompleted = false; // Is the task finished?
+
+    private final Task task;
+
+    public GridTile(int x, int y, Task task)
     {
         this.x = x;
         this.y = y;
-        this.requirementText = req;
+        this.task = task;
+    }
+
+    public int getX()
+    {
+        return x;
+    }
+
+    public int getY()
+    {
+        return y;
+    }
+
+    public boolean isUnlocked()
+    {
+        return isUnlocked;
+    }
+
+    public void setUnlocked(boolean unlocked)
+    {
+        isUnlocked = unlocked;
+    }
+
+    public boolean isCompleted()
+    {
+        return isCompleted;
+    }
+
+    public void setCompleted(boolean completed)
+    {
+        isCompleted = completed;
+    }
+
+    public Task getTask()
+    {
+        return task;
     }
 }

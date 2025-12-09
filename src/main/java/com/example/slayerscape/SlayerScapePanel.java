@@ -11,6 +11,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
 
+/**
+ * The main UI panel for the SlayerScape plugin.
+ * Displays current status (Keys, XP), the MiniMap grid, and details for the selected tile.
+ */
 public class SlayerScapePanel extends PluginPanel
 {
     private final SlayerManager manager;
@@ -25,6 +29,7 @@ public class SlayerScapePanel extends PluginPanel
     private final JLabel detailTitle;
     private final JLabel detailIcon;
     private final JLabel detailStatus;
+    private final JLabel detailDifficulty;
     private final JButton unlockButton;
     private final JButton completeButton;
 
@@ -58,7 +63,7 @@ public class SlayerScapePanel extends PluginPanel
 
         // Mini Map
         miniMap = new SlayerScapeMiniMap(manager, this::updateDetailView);
-        // Center the minimap
+        // Center the minimap wrapper
         JPanel mapWrapper = new JPanel(new FlowLayout(FlowLayout.CENTER));
         mapWrapper.add(miniMap);
         centerContainer.add(mapWrapper);
@@ -72,12 +77,17 @@ public class SlayerScapePanel extends PluginPanel
         detailIcon.setAlignmentX(Component.CENTER_ALIGNMENT);
         detailPanel.add(detailIcon);
 
-        detailPanel.add(Box.createVerticalStrut(10));
+        detailPanel.add(Box.createVerticalStrut(5));
 
         detailTitle = new JLabel("Select a Tile");
         detailTitle.setFont(FontManager.getRunescapeBoldFont());
         detailTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
         detailPanel.add(detailTitle);
+
+        detailDifficulty = new JLabel("");
+        detailDifficulty.setFont(FontManager.getRunescapeSmallFont());
+        detailDifficulty.setAlignmentX(Component.CENTER_ALIGNMENT);
+        detailPanel.add(detailDifficulty);
 
         detailStatus = new JLabel("");
         detailStatus.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -127,17 +137,27 @@ public class SlayerScapePanel extends PluginPanel
     {
         if (tile == null) return;
 
-        // Title
-        detailTitle.setText("<html><center>" + tile.requirementText + "</center></html>");
+        Task task = tile.getTask();
+
+        // Title & Difficulty
+        detailTitle.setText("<html><center>" + task.getDescription() + "</center></html>");
+        detailDifficulty.setText(task.getDifficulty().toString());
+
+        switch (task.getDifficulty()) {
+            case EASY: detailDifficulty.setForeground(Color.GREEN); break;
+            case MEDIUM: detailDifficulty.setForeground(Color.YELLOW); break;
+            case HARD: detailDifficulty.setForeground(Color.ORANGE); break;
+            case ELITE: detailDifficulty.setForeground(Color.RED); break;
+        }
 
         // Status & Buttons
         unlockButton.setVisible(false);
         completeButton.setVisible(false);
 
-        if (tile.isCompleted) {
+        if (tile.isCompleted()) {
             detailStatus.setText("Completed");
             detailStatus.setForeground(Color.GREEN);
-        } else if (tile.isUnlocked) {
+        } else if (tile.isUnlocked()) {
             detailStatus.setText("Active Task");
             detailStatus.setForeground(Color.YELLOW);
             completeButton.setVisible(true);
@@ -146,30 +166,30 @@ public class SlayerScapePanel extends PluginPanel
             detailStatus.setForeground(Color.GRAY);
 
             // Fog of War Check
-            if (manager.isNeighborUnlocked(tile.x, tile.y)) {
+            if (manager.isNeighborUnlocked(tile.getX(), tile.getY())) {
                 unlockButton.setVisible(true);
                 unlockButton.setEnabled(manager.slayerKeys > 0);
                 unlockButton.setText("Unlock (1 Key)");
             } else {
                 detailStatus.setText("Too far away");
-                // detailStatus.setForeground(Color.DARK_GRAY);
             }
         }
 
-        // Icon logic (Safe Async) - Show icon even if locked if reachable?
-        // User asked "show what will be unlocked". So if neighbor unlocked, show icon.
-        boolean showContent = tile.isUnlocked || manager.isNeighborUnlocked(tile.x, tile.y);
+        // Icon logic
+        // We show the icon if the tile is visible (unlocked or reachable neighbor)
+        boolean showContent = tile.isUnlocked() || manager.isNeighborUnlocked(tile.getX(), tile.getY());
 
         if (showContent) {
-            if (tile.isSprite) {
-                // To fix crash: We cannot call getSprite on EDT.
-                // We leave the icon blank or set a default.
-                // NOTE: To properly fix this, we would need to pass the Client Thread and schedule a callback.
-                // For now, text is sufficient to prevent crashing.
+            if (task.isSprite()) {
+                // IMPORTANT: SpriteManager must NOT be called on EDT.
+                // Since this update runs on EDT, we cannot fetch sprites safely here without a callback mechanism.
+                // For safety and stability, we use a placeholder text.
+                // To fix this properly, we'd need to fetch on Client thread and post back to EDT.
                 detailIcon.setIcon(null);
-                detailIcon.setText("[Skill Icon]");
-            } else if (tile.iconId != -1) {
-                AsyncBufferedImage img = itemManager.getImage(tile.iconId);
+                detailIcon.setText("[Icon: " + task.getIconId() + "]");
+            } else if (task.getIconId() != -1) {
+                // ItemManager.getImage is mostly safe or async-friendly (returns AsyncBufferedImage)
+                AsyncBufferedImage img = itemManager.getImage(task.getIconId());
                 detailIcon.setIcon(new ImageIcon(img));
                 detailIcon.setText("");
             } else {
@@ -177,7 +197,7 @@ public class SlayerScapePanel extends PluginPanel
                 detailIcon.setText("");
             }
         } else {
-            detailIcon.setIcon(null); // Locked icon?
+            detailIcon.setIcon(null);
             detailIcon.setText("?");
         }
     }
@@ -185,9 +205,9 @@ public class SlayerScapePanel extends PluginPanel
     private void onUnlockClicked(ActionEvent e)
     {
         GridTile tile = miniMap.getSelectedTile();
-        if (tile != null && !tile.isUnlocked)
+        if (tile != null && !tile.isUnlocked())
         {
-            if (manager.spendKey(tile.x, tile.y))
+            if (manager.spendKey(tile.getX(), tile.getY()))
             {
                 refreshUI();
             }
@@ -197,7 +217,7 @@ public class SlayerScapePanel extends PluginPanel
     private void onCompleteClicked(ActionEvent e)
     {
         GridTile tile = miniMap.getSelectedTile();
-        if (tile != null && tile.isUnlocked && !tile.isCompleted)
+        if (tile != null && tile.isUnlocked() && !tile.isCompleted())
         {
             manager.completeTask(tile);
             refreshUI();

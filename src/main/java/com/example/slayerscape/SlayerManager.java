@@ -1,13 +1,12 @@
 package com.example.slayerscape;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 import net.runelite.api.ItemID;
-import net.runelite.api.Quest;
-import net.runelite.api.Skill;
-import net.runelite.api.SpriteID;
 
+/**
+ * The core logic manager for the SlayerScape plugin.
+ * Handles the grid state, key management, and task progression.
+ */
 @SuppressWarnings("deprecation")
 public class SlayerManager
 {
@@ -21,73 +20,46 @@ public class SlayerManager
     public int slayerTaskDryStreak = 0;
 
     private final SlayerScapeConfig config;
+    private final TaskGenerator taskGenerator;
 
     public SlayerManager(SlayerScapeConfig config)
     {
         this.config = config;
+        this.taskGenerator = new TaskGenerator();
         generateGrid();
     }
 
+    /**
+     * Generates the initial grid with difficulty scaling from the center outward.
+     */
     private void generateGrid()
     {
         Random rng = new Random();
-        List<String> possibleTasks = new ArrayList<>();
-
-        // 1. Add All Skills 1-99
-        for (Skill skill : Skill.values())
-        {
-            if (skill == Skill.OVERALL) continue; // Skip Total Level
-            // Add intervals or all? "All skilling tasks that are possible"
-            // Let's add every 5 levels to keep it sane but extensive?
-            // Or truly all? 1-99 is 23 * 99 = 2277 tasks. That's fine.
-            // But maybe too much noise? User said "all skilling tasks".
-            // I'll add levels 5, 10, 15, ... 95, 99.
-            // Actually, let's do 1-99 for variety.
-            for (int level = 5; level <= 99; level++) {
-                possibleTasks.add(skill.getName() + " Level " + level);
-            }
-        }
-
-        // 2. Add All Quests
-        for (Quest quest : Quest.values())
-        {
-            possibleTasks.add("Complete " + quest.getName());
-        }
-
-        // 3. Manual Tasks (Combat/Misc)
-        String[] manualTasks = {
-            // Kill Tasks
-            "Kill 10 Cows", "Kill 10 Chickens", "Kill 10 Goblins", "Kill 5 Giant Rats",
-            "Kill 5 Al-Kharid Warriors", "Kill 1 Hill Giant", "Kill 1 Moss Giant",
-            "Kill 5 Guards", "Kill 5 Dwarves", "Kill 5 Skeletons", "Kill 1 Blue Dragon",
-            "Kill 1 Green Dragon", "Kill 1 Lesser Demon", "Kill 1 Greater Demon",
-
-            // Miscellaneous
-            "Cook a Shrimp", "Burn a normal log", "Smelt a Bronze Bar", "Catch a Shrimp",
-            "Bury a Big Bones", "Craft a Leather Cowl", "Craft a Gold Amulet",
-            "Teleport to Varrock", "Teleport to Falador", "Teleport to Lumbridge"
-        };
-
-        for (String t : manualTasks) possibleTasks.add(t);
+        int center = GRID_SIZE / 2;
 
         for (int x = 0; x < GRID_SIZE; x++)
         {
             for (int y = 0; y < GRID_SIZE; y++)
             {
-                // Pick a random task for every tile
-                String randomTask = possibleTasks.get(rng.nextInt(possibleTasks.size()));
-                grid[x][y] = new GridTile(x, y, randomTask);
-                assignIcon(grid[x][y]);
+                // Calculate Chebyshev distance (kings move distance) from center
+                int dist = Math.max(Math.abs(x - center), Math.abs(y - center));
+
+                Task.Difficulty diff;
+                if (dist <= 4) diff = Task.Difficulty.EASY;
+                else if (dist <= 9) diff = Task.Difficulty.MEDIUM;
+                else if (dist <= 13) diff = Task.Difficulty.HARD;
+                else diff = Task.Difficulty.ELITE;
+
+                Task task = taskGenerator.getRandomTask(diff, rng);
+                grid[x][y] = new GridTile(x, y, task);
             }
         }
 
-        // Unlock the center tile immediately to start
-        int center = GRID_SIZE / 2;
-        grid[center][center].isUnlocked = true;
-        grid[center][center].isCompleted = true;
-        grid[center][center].requirementText = "Start";
-        grid[center][center].iconId = -1;
-        grid[center][center].isSprite = false;
+        // Initialize the center "Start" tile
+        Task startTask = new Task("Start", Task.Difficulty.EASY, Task.Type.MISC, -1, false);
+        grid[center][center] = new GridTile(center, center, startTask);
+        grid[center][center].setUnlocked(true);
+        grid[center][center].setCompleted(true);
         revealNeighbors(center, center);
     }
 
@@ -145,29 +117,45 @@ public class SlayerManager
         }
     }
 
+    /**
+     * Spends a key to unlock a tile at (x, y).
+     * @param x Grid X coordinate.
+     * @param y Grid Y coordinate.
+     * @return true if successful, false otherwise.
+     */
     public boolean spendKey(int x, int y)
     {
-        if (slayerKeys > 0 && !grid[x][y].isUnlocked && isNeighborUnlocked(x, y))
+        if (slayerKeys > 0 && !grid[x][y].isUnlocked() && isNeighborUnlocked(x, y))
         {
             slayerKeys--;
-            grid[x][y].isUnlocked = true;
+            grid[x][y].setUnlocked(true);
             return true; // Success
         }
         return false;
     }
 
+    /**
+     * Marks a tile as completed.
+     * @param tile The tile to complete.
+     */
     public void completeTask(GridTile tile)
     {
-        if (!tile.isCompleted)
+        if (!tile.isCompleted())
         {
-            tile.isCompleted = true;
+            tile.setCompleted(true);
             // No key awarded for manual grid completion
         }
     }
 
+    /**
+     * Checks if any neighbor (N, S, E, W) is unlocked or completed.
+     * Used for determining reachable tiles (Fog of War).
+     * @param x Grid X
+     * @param y Grid Y
+     * @return true if at least one neighbor is accessible.
+     */
     public boolean isNeighborUnlocked(int x, int y)
     {
-        // Check adjacent tiles (N, S, E, W)
         int[][] dirs = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
 
         for (int[] dir : dirs)
@@ -177,7 +165,7 @@ public class SlayerManager
 
             if (nx >= 0 && nx < GRID_SIZE && ny >= 0 && ny < GRID_SIZE)
             {
-                if (grid[nx][ny].isUnlocked || grid[nx][ny].isCompleted)
+                if (grid[nx][ny].isUnlocked() || grid[nx][ny].isCompleted())
                 {
                     return true;
                 }
@@ -186,87 +174,8 @@ public class SlayerManager
         return false;
     }
 
-    // When a tile is "Completed" (task done), reveal surroundings
-    public void completeTile(int x, int y)
-    {
-        grid[x][y].isCompleted = true;
-        revealNeighbors(x, y);
-    }
-
     private void revealNeighbors(int x, int y)
     {
-        // Simple logic to unlock adjacent tiles visually (Fog of War removal)
-    }
-
-    private void assignIcon(GridTile tile)
-    {
-        String req = tile.requirementText.toLowerCase();
-
-        // Check Skills
-        for (Skill skill : Skill.values()) {
-            if (skill == Skill.OVERALL) continue;
-            if (req.contains(skill.getName().toLowerCase() + " level")) {
-                tile.isSprite = true;
-                switch (skill) {
-                    case ATTACK: tile.iconId = SpriteID.SKILL_ATTACK; return;
-                    case DEFENCE: tile.iconId = SpriteID.SKILL_DEFENCE; return;
-                    case STRENGTH: tile.iconId = SpriteID.SKILL_STRENGTH; return;
-                    case HITPOINTS: tile.iconId = SpriteID.SKILL_HITPOINTS; return;
-                    case RANGED: tile.iconId = SpriteID.SKILL_RANGED; return;
-                    case PRAYER: tile.iconId = SpriteID.SKILL_PRAYER; return;
-                    case MAGIC: tile.iconId = SpriteID.SKILL_MAGIC; return;
-                    case COOKING: tile.iconId = SpriteID.SKILL_COOKING; return;
-                    case WOODCUTTING: tile.iconId = SpriteID.SKILL_WOODCUTTING; return;
-                    case FLETCHING: tile.iconId = SpriteID.SKILL_FLETCHING; return;
-                    case FISHING: tile.iconId = SpriteID.SKILL_FISHING; return;
-                    case FIREMAKING: tile.iconId = SpriteID.SKILL_FIREMAKING; return;
-                    case CRAFTING: tile.iconId = SpriteID.SKILL_CRAFTING; return;
-                    case SMITHING: tile.iconId = SpriteID.SKILL_SMITHING; return;
-                    case MINING: tile.iconId = SpriteID.SKILL_MINING; return;
-                    case HERBLORE: tile.iconId = SpriteID.SKILL_HERBLORE; return;
-                    case AGILITY: tile.iconId = SpriteID.SKILL_AGILITY; return;
-                    case THIEVING: tile.iconId = SpriteID.SKILL_THIEVING; return;
-                    case SLAYER: tile.iconId = SpriteID.SKILL_SLAYER; return;
-                    case FARMING: tile.iconId = SpriteID.SKILL_FARMING; return;
-                    case RUNECRAFT: tile.iconId = SpriteID.SKILL_RUNECRAFT; return;
-                    case HUNTER: tile.iconId = SpriteID.SKILL_HUNTER; return;
-                    case CONSTRUCTION: tile.iconId = SpriteID.SKILL_CONSTRUCTION; return;
-                    default: tile.iconId = SpriteID.SKILL_TOTAL; return;
-                }
-            }
-        }
-
-        // Quests
-        if (req.contains("complete ")) {
-             tile.iconId = SpriteID.TAB_QUESTS;
-             tile.isSprite = true;
-             return;
-        }
-
-        // Mobs / Items - Use Item IDs
-        if (req.contains("cow")) { tile.iconId = ItemID.COWHIDE; tile.isSprite = false; }
-        else if (req.contains("chicken")) { tile.iconId = ItemID.FEATHER; tile.isSprite = false; }
-        else if (req.contains("goblin")) { tile.iconId = ItemID.GOBLIN_MAIL; tile.isSprite = false; }
-        else if (req.contains("rat")) { tile.iconId = ItemID.BONES; tile.isSprite = false; }
-        else if (req.contains("giant")) { tile.iconId = ItemID.BIG_BONES; tile.isSprite = false; }
-        else if (req.contains("guard")) { tile.iconId = ItemID.IRON_BOOTS; tile.isSprite = false; }
-        else if (req.contains("dwarf")) { tile.iconId = ItemID.DWARF_REMAINS; tile.isSprite = false; }
-        else if (req.contains("skeleton")) { tile.iconId = ItemID.BONES; tile.isSprite = false; }
-        else if (req.contains("dragon")) { tile.iconId = ItemID.DRAGON_BONES; tile.isSprite = false; }
-        else if (req.contains("demon")) { tile.iconId = ItemID.ASHES; tile.isSprite = false; }
-
-        // Misc
-        else if (req.contains("shrimp")) { tile.iconId = ItemID.RAW_SHRIMPS; tile.isSprite = false; }
-        else if (req.contains("log")) { tile.iconId = ItemID.LOGS; tile.isSprite = false; }
-        else if (req.contains("bronze bar")) { tile.iconId = ItemID.BRONZE_BAR; tile.isSprite = false; }
-        else if (req.contains("bones")) { tile.iconId = ItemID.BIG_BONES; tile.isSprite = false; }
-        else if (req.contains("cowl")) { tile.iconId = ItemID.LEATHER_COWL; tile.isSprite = false; }
-        else if (req.contains("amulet")) { tile.iconId = ItemID.GOLD_AMULET; tile.isSprite = false; }
-        else if (req.contains("teleport")) { tile.iconId = SpriteID.SPELL_VARROCK_TELEPORT; tile.isSprite = true; }
-        else {
-             // Fallback
-             tile.iconId = -1;
-             tile.isSprite = false;
-        }
+        // Placeholder for future logic where completing a tile might auto-unlock neighbors visually
     }
 }

@@ -2,12 +2,13 @@ package com.example.slayerscape;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.function.Consumer;
 
+/**
+ * The Minimap component that renders the grid and handles user interaction (panning, selection).
+ */
 public class SlayerScapeMiniMap extends JPanel
 {
     private static final int TILE_SIZE = 18;
@@ -27,7 +28,7 @@ public class SlayerScapeMiniMap extends JPanel
     private static final int EDGE_THRESHOLD = 30; // pixels from edge to trigger scroll
     private static final int SCROLL_SPEED = 5;
 
-    // Drag-to-pan
+    // Drag-to-pan state
     private Point lastDragPoint = null;
 
     public SlayerScapeMiniMap(SlayerManager manager, Consumer<GridTile> onTileSelected)
@@ -43,10 +44,10 @@ public class SlayerScapeMiniMap extends JPanel
         offsetX = (viewSize - gridSizePx) / 2.0;
         offsetY = (viewSize - gridSizePx) / 2.0;
 
-        // Set a fixed size for the panel to fit in the sidebar comfortably
+        // Set a fixed size for the panel to fit in the sidebar
         setPreferredSize(new Dimension(225, 225));
 
-        // Timer for smooth scrolling (Edge scrolling)
+        // Timer for smooth edge scrolling
         scrollTimer = new Timer(16, e -> {
             if (scrollSpeedX != 0 || scrollSpeedY != 0) {
                 offsetX += scrollSpeedX;
@@ -62,15 +63,18 @@ public class SlayerScapeMiniMap extends JPanel
             @Override
             public void mousePressed(MouseEvent e)
             {
-                // If dragging, we start tracking here
+                // Capture start point for dragging
                 lastDragPoint = e.getPoint();
 
-                // Check if it's a click on a tile (only if not moving much?)
-                // For simplicity, we select on press, but if dragged, we might want to ignore selection logic?
-                // Let's select on press for now.
-
+                // Handle Selection
+                // Note: We also select on press. If the user meant to drag, selection still happens.
+                // This is generally acceptable behavior for maps (select + drag).
                 int clickX = e.getX();
                 int clickY = e.getY();
+
+                // Translate screen click to grid coordinates
+                // gridX * (SIZE) + offsetX = clickX
+                // gridX = (clickX - offsetX) / SIZE
                 int gridX = (int)((clickX - offsetX) / (TILE_SIZE + GAP));
                 int gridY = (int)((clickY - offsetY) / (TILE_SIZE + GAP));
 
@@ -89,15 +93,9 @@ public class SlayerScapeMiniMap extends JPanel
             }
 
             @Override
-            public void mouseEntered(MouseEvent e)
-            {
-                // Regain focus if needed
-            }
-
-            @Override
             public void mouseExited(MouseEvent e)
             {
-                // Stop edge scrolling if mouse leaves the component
+                // Stop edge scrolling if mouse leaves
                 scrollSpeedX = 0;
                 scrollSpeedY = 0;
                 lastDragPoint = null;
@@ -112,7 +110,7 @@ public class SlayerScapeMiniMap extends JPanel
             @Override
             public void mouseDragged(MouseEvent e)
             {
-                // Drag to pan
+                // Handle Panning logic
                 if (lastDragPoint != null) {
                     int dx = e.getX() - lastDragPoint.x;
                     int dy = e.getY() - lastDragPoint.y;
@@ -125,7 +123,7 @@ public class SlayerScapeMiniMap extends JPanel
                     lastDragPoint = e.getPoint();
                 }
 
-                // Also update edge scroll speed if dragging near edge
+                // Also check for edge scrolling during drag
                 updateScrollSpeed(e.getX(), e.getY());
             }
         };
@@ -133,10 +131,13 @@ public class SlayerScapeMiniMap extends JPanel
         addMouseListener(mouseHandler);
         addMouseMotionListener(mouseHandler);
 
-        // Initial selection
+        // Trigger initial selection
         SwingUtilities.invokeLater(() -> onTileSelected.accept(manager.grid[selectedCoords.x][selectedCoords.y]));
     }
 
+    /**
+     * Updates the automatic scroll speed based on mouse position relative to panel edges.
+     */
     private void updateScrollSpeed(int mouseX, int mouseY)
     {
         int w = getWidth();
@@ -147,14 +148,14 @@ public class SlayerScapeMiniMap extends JPanel
         scrollSpeedX = 0;
         scrollSpeedY = 0;
 
-        // Check horizontal edge
+        // Horizontal Edge Check
         if (mouseX < EDGE_THRESHOLD) {
             scrollSpeedX = SCROLL_SPEED;
         } else if (mouseX > w - EDGE_THRESHOLD) {
             scrollSpeedX = -SCROLL_SPEED;
         }
 
-        // Check vertical edge
+        // Vertical Edge Check
         if (mouseY < EDGE_THRESHOLD) {
             scrollSpeedY = SCROLL_SPEED;
         } else if (mouseY > h - EDGE_THRESHOLD) {
@@ -162,37 +163,36 @@ public class SlayerScapeMiniMap extends JPanel
         }
     }
 
+    /**
+     * Clamps the scroll offset to keep the grid within viewable bounds.
+     */
     private void limitOffset()
     {
         int gridSizePx = SlayerManager.GRID_SIZE * (TILE_SIZE + GAP);
         int w = getWidth();
         int h = getHeight();
 
-        // Calculate min/max offsets
-        // Min offset: w - gridSizePx (scrolled to far right/bottom)
-        // Max offset: 0 (scrolled to top/left)
+        // Calculate limits
+        // Min Offset: When grid is scrolled fully to the left/top (showing bottom-right)
+        // Offset + GridSize must be >= Width - Padding
+        // Offset >= Width - GridSize - Padding
 
-        int minX = w - gridSizePx;
-        int maxX = 0;
-        int minY = h - gridSizePx;
-        int maxY = 0;
+        int padding = 50; // Allow some over-scroll
+        int minX = w - gridSizePx - padding;
+        int maxX = padding;
 
-        // Add padding
-        int padding = 20;
-        minX -= padding;
-        maxX += padding;
-        minY -= padding;
-        maxY += padding;
+        int minY = h - gridSizePx - padding;
+        int maxY = padding;
 
-        if (minX > maxX) {
-             // Grid is smaller than view, center it
+        if (gridSizePx < w) {
+             // Center if grid is smaller than view
              offsetX = (w - gridSizePx) / 2.0;
         } else {
             if (offsetX < minX) offsetX = minX;
             if (offsetX > maxX) offsetX = maxX;
         }
 
-        if (minY > maxY) {
+        if (gridSizePx < h) {
             offsetY = (h - gridSizePx) / 2.0;
         } else {
             if (offsetY < minY) offsetY = minY;
@@ -214,7 +214,18 @@ public class SlayerScapeMiniMap extends JPanel
 
         Graphics2D g2d = (Graphics2D) g;
 
+        // Apply Viewport Translation
         g2d.translate(offsetX, offsetY);
+
+        // Get clip bounds to optimize rendering (Frustum Culling)
+        // Clip bounds are in "screen" coordinates.
+        // We need to map them to "grid" coordinates.
+        // Rectangle clip = g.getClipBounds();
+        // Note: Translation affects the coordinate system, so drawing at (x,y) lands on (x+off, y+off).
+        // To cull, we check if (drawX + offsetX, drawY + offsetY) is within (0,0,width,height).
+
+        int panelW = getWidth();
+        int panelH = getHeight();
 
         for (int x = 0; x < SlayerManager.GRID_SIZE; x++)
         {
@@ -223,13 +234,31 @@ public class SlayerScapeMiniMap extends JPanel
                 int drawX = x * (TILE_SIZE + GAP);
                 int drawY = y * (TILE_SIZE + GAP);
 
+                // Optimization: Skip tiles outside viewport
+                double screenX = drawX + offsetX;
+                double screenY = drawY + offsetY;
+
+                if (screenX + TILE_SIZE < 0 || screenX > panelW ||
+                    screenY + TILE_SIZE < 0 || screenY > panelH)
+                {
+                    continue;
+                }
+
                 GridTile tile = manager.grid[x][y];
+                Task task = tile.getTask();
 
                 // Color Logic
-                if (tile.isCompleted) {
+                if (tile.isCompleted()) {
                     g2d.setColor(new Color(0, 180, 0)); // Green
-                } else if (tile.isUnlocked) {
-                    g2d.setColor(new Color(200, 200, 0)); // Yellow/Gold
+                } else if (tile.isUnlocked()) {
+                    // Tint based on difficulty?
+                    switch (task.getDifficulty()) {
+                        case EASY: g2d.setColor(new Color(200, 255, 200)); break; // Pale Green
+                        case MEDIUM: g2d.setColor(new Color(255, 255, 200)); break; // Pale Yellow
+                        case HARD: g2d.setColor(new Color(255, 200, 200)); break; // Pale Red
+                        case ELITE: g2d.setColor(new Color(200, 200, 255)); break; // Pale Blue
+                        default: g2d.setColor(new Color(200, 200, 0)); break;
+                    }
                 } else {
                     if (manager.isNeighborUnlocked(x, y)) {
                         g2d.setColor(Color.GRAY); // Visible/Reachable
@@ -256,6 +285,7 @@ public class SlayerScapeMiniMap extends JPanel
             }
         }
 
+        // Reset translation
         g2d.translate(-offsetX, -offsetY);
     }
 }
