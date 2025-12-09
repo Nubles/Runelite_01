@@ -67,9 +67,18 @@ public class SlayerScapeMiniMap extends JPanel
                 GridTile tile = manager.grid[x][y];
 
                 // Color Logic
-                if (tile.isCompleted) g2d.setColor(new Color(0, 180, 0)); // Green
-                else if (tile.isUnlocked) g2d.setColor(new Color(200, 200, 0)); // Yellow/Gold
-                else g2d.setColor(Color.DARK_GRAY); // Locked
+                if (tile.isCompleted) {
+                    g2d.setColor(new Color(0, 180, 0)); // Green
+                } else if (tile.isUnlocked) {
+                    g2d.setColor(new Color(200, 200, 0)); // Yellow/Gold
+                } else {
+                    // Fog of War Logic
+                    if (manager.isNeighborUnlocked(x, y)) {
+                        g2d.setColor(Color.GRAY); // Visible/Reachable
+                    } else {
+                        g2d.setColor(Color.BLACK); // Hidden/Fog
+                    }
+                }
 
                 g2d.fillRect(drawX, drawY, TILE_SIZE, TILE_SIZE);
 

@@ -26,6 +26,7 @@ public class SlayerScapePanel extends PluginPanel
     private final JLabel detailIcon;
     private final JLabel detailStatus;
     private final JButton unlockButton;
+    private final JButton completeButton;
 
     public SlayerScapePanel(SlayerManager manager, SlayerScapeConfig config, ItemManager itemManager, SpriteManager spriteManager)
     {
@@ -90,6 +91,12 @@ public class SlayerScapePanel extends PluginPanel
         unlockButton.setVisible(false);
         detailPanel.add(unlockButton);
 
+        completeButton = new JButton("Mark Complete");
+        completeButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        completeButton.addActionListener(this::onCompleteClicked);
+        completeButton.setVisible(false);
+        detailPanel.add(completeButton);
+
         centerContainer.add(detailPanel);
 
         add(centerContainer, BorderLayout.CENTER);
@@ -123,25 +130,37 @@ public class SlayerScapePanel extends PluginPanel
         // Title
         detailTitle.setText("<html><center>" + tile.requirementText + "</center></html>");
 
-        // Status
+        // Status & Buttons
+        unlockButton.setVisible(false);
+        completeButton.setVisible(false);
+
         if (tile.isCompleted) {
             detailStatus.setText("Completed");
             detailStatus.setForeground(Color.GREEN);
-            unlockButton.setVisible(false);
         } else if (tile.isUnlocked) {
             detailStatus.setText("Active Task");
             detailStatus.setForeground(Color.YELLOW);
-            unlockButton.setVisible(false);
+            completeButton.setVisible(true);
         } else {
             detailStatus.setText("Locked");
             detailStatus.setForeground(Color.GRAY);
-            unlockButton.setVisible(true);
-            unlockButton.setEnabled(manager.slayerKeys > 0);
-            unlockButton.setText("Unlock (1 Key)");
+
+            // Fog of War Check
+            if (manager.isNeighborUnlocked(tile.x, tile.y)) {
+                unlockButton.setVisible(true);
+                unlockButton.setEnabled(manager.slayerKeys > 0);
+                unlockButton.setText("Unlock (1 Key)");
+            } else {
+                detailStatus.setText("Too far away");
+                // detailStatus.setForeground(Color.DARK_GRAY);
+            }
         }
 
-        // Icon logic (Safe Async)
-        if (tile.isUnlocked) {
+        // Icon logic (Safe Async) - Show icon even if locked if reachable?
+        // User asked "show what will be unlocked". So if neighbor unlocked, show icon.
+        boolean showContent = tile.isUnlocked || manager.isNeighborUnlocked(tile.x, tile.y);
+
+        if (showContent) {
             if (tile.isSprite) {
                 // To fix crash: We cannot call getSprite on EDT.
                 // We leave the icon blank or set a default.
@@ -172,6 +191,16 @@ public class SlayerScapePanel extends PluginPanel
             {
                 refreshUI();
             }
+        }
+    }
+
+    private void onCompleteClicked(ActionEvent e)
+    {
+        GridTile tile = miniMap.getSelectedTile();
+        if (tile != null && tile.isUnlocked && !tile.isCompleted)
+        {
+            manager.completeTask(tile);
+            refreshUI();
         }
     }
 }

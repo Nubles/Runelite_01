@@ -132,11 +132,45 @@ public class SlayerManager
 
     public boolean spendKey(int x, int y)
     {
-        if (slayerKeys > 0 && !grid[x][y].isUnlocked)
+        if (slayerKeys > 0 && !grid[x][y].isUnlocked && isNeighborUnlocked(x, y))
         {
             slayerKeys--;
             grid[x][y].isUnlocked = true;
             return true; // Success
+        }
+        return false;
+    }
+
+    public void completeTask(GridTile tile)
+    {
+        if (!tile.isCompleted)
+        {
+            tile.isCompleted = true;
+            addKey(); // Reward for manual completion too
+        }
+    }
+
+    public boolean isNeighborUnlocked(int x, int y)
+    {
+        // Check adjacent tiles (N, S, E, W)
+        // If center is already completed, we can unlock neighbors.
+        // Actually, logic: Can unlock if ANY neighbor is Unlocked OR Completed.
+        // If we are at the center, we are unlocked.
+
+        int[][] dirs = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
+
+        for (int[] dir : dirs)
+        {
+            int nx = x + dir[0];
+            int ny = y + dir[1];
+
+            if (nx >= 0 && nx < GRID_SIZE && ny >= 0 && ny < GRID_SIZE)
+            {
+                if (grid[nx][ny].isUnlocked || grid[nx][ny].isCompleted)
+                {
+                    return true;
+                }
+            }
         }
         return false;
     }
