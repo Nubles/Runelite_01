@@ -21,6 +21,7 @@ public class SlayerScapePanel extends PluginPanel
     private final SpriteManager spriteManager;
 
     private final SlayerScapeMiniMap miniMap;
+    private final JScrollPane mapScrollPane; // Scroll pane for large map
     private final JPanel detailPanel;
     private final JLabel detailTitle;
     private final JLabel detailIcon;
@@ -52,16 +53,26 @@ public class SlayerScapePanel extends PluginPanel
 
         add(topPanel, BorderLayout.NORTH);
 
-        // --- Center: MiniMap + Details ---
+        // --- Center: MiniMap (Scrollable) + Details ---
         JPanel centerContainer = new JPanel();
         centerContainer.setLayout(new BoxLayout(centerContainer, BoxLayout.Y_AXIS));
 
         // Mini Map
-        miniMap = new SlayerScapeMiniMap(manager, this::updateDetailView);
-        // Center the minimap
-        JPanel mapWrapper = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        mapWrapper.add(miniMap);
-        centerContainer.add(mapWrapper);
+        miniMap = new SlayerScapeMiniMap(manager, this::updateDetailView, itemManager);
+        mapScrollPane = new JScrollPane(miniMap);
+        mapScrollPane.setPreferredSize(new Dimension(225, 225)); // Set a reasonable height for sidebar
+        mapScrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        mapScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
+        // Scroll to center initially
+        SwingUtilities.invokeLater(() -> {
+            JViewport viewport = mapScrollPane.getViewport();
+            int centerX = (miniMap.getPreferredSize().width - viewport.getWidth()) / 2;
+            int centerY = (miniMap.getPreferredSize().height - viewport.getHeight()) / 2;
+            viewport.setViewPosition(new Point(centerX, centerY));
+        });
+
+        centerContainer.add(mapScrollPane);
 
         // Detail Panel
         detailPanel = new JPanel();
