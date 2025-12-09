@@ -58,10 +58,14 @@ public class SlayerScapePanel extends PluginPanel
 
         // Mini Map
         miniMap = new SlayerScapeMiniMap(manager, this::updateDetailView);
-        // Center the minimap
-        JPanel mapWrapper = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        mapWrapper.add(miniMap);
-        centerContainer.add(mapWrapper);
+
+        // Wrap in ScrollPane for drag-and-pan
+        JScrollPane scrollPane = new JScrollPane(miniMap);
+        scrollPane.setPreferredSize(new Dimension(225, 225)); // Set a reasonable viewing size
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER); // Hide bars for cleaner look if dragging
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+
+        centerContainer.add(scrollPane);
 
         // Detail Panel
         detailPanel = new JPanel();

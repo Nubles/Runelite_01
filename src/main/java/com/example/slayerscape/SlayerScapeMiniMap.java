@@ -15,6 +15,7 @@ public class SlayerScapeMiniMap extends JPanel
     private final Consumer<GridTile> onTileSelected;
 
     private Point selectedCoords = new Point(SlayerManager.GRID_SIZE / 2, SlayerManager.GRID_SIZE / 2); // Default center
+    private Point dragStartPoint;
 
     public SlayerScapeMiniMap(SlayerManager manager, Consumer<GridTile> onTileSelected)
     {
@@ -25,11 +26,13 @@ public class SlayerScapeMiniMap extends JPanel
         int dim = SlayerManager.GRID_SIZE * (TILE_SIZE + GAP);
         setPreferredSize(new Dimension(dim, dim));
 
-        addMouseListener(new MouseAdapter()
+        MouseAdapter mouseHandler = new MouseAdapter()
         {
             @Override
             public void mousePressed(MouseEvent e)
             {
+                dragStartPoint = e.getPoint();
+
                 int x = e.getX() / (TILE_SIZE + GAP);
                 int y = e.getY() / (TILE_SIZE + GAP);
 
@@ -40,7 +43,35 @@ public class SlayerScapeMiniMap extends JPanel
                     repaint();
                 }
             }
-        });
+
+            @Override
+            public void mouseDragged(MouseEvent e)
+            {
+                if (dragStartPoint == null)
+                {
+                    return;
+                }
+
+                JViewport viewport = (JViewport) SwingUtilities.getAncestorOfClass(JViewport.class, SlayerScapeMiniMap.this);
+                if (viewport != null)
+                {
+                    Point viewPos = viewport.getViewPosition();
+                    int dx = dragStartPoint.x - e.getX();
+                    int dy = dragStartPoint.y - e.getY();
+
+                    viewPos.translate(dx, dy);
+
+                    // Clamp to bounds
+                    viewPos.x = Math.max(0, Math.min(viewPos.x, getWidth() - viewport.getWidth()));
+                    viewPos.y = Math.max(0, Math.min(viewPos.y, getHeight() - viewport.getHeight()));
+
+                    viewport.setViewPosition(viewPos);
+                }
+            }
+        };
+
+        addMouseListener(mouseHandler);
+        addMouseMotionListener(mouseHandler);
 
         // Initial selection
         SwingUtilities.invokeLater(() -> onTileSelected.accept(manager.grid[selectedCoords.x][selectedCoords.y]));
